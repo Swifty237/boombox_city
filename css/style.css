@@ -1,0 +1,54 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../resources/pictures/telechargement.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.navigation {
+    /* background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(231, 81, 12, .8), rgb(0, 0, 0)); */
+    background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0)); 
+    z-index: 5555;
+    width: auto;
+    top: 0;
+    position: sticky;
+}
+
+.block-container {
+    width: auto;
+}
+
+.logo {
+    height: 8rem;
+    width: 14rem;
+}
+
+.profil {
+    width: 8rem;
+}
+
+.left-side {
+    z-index: 999;
+    position: fixed;
+    left: 1%;
+}
+
+.right-side {
+    z-index: 998;
+    position: fixed;
+    right: 1%;
+}
+
+.footbar {
+    /* background: linear-gradient(.25turn,rgba(0, 0, 0), rgba(231, 81, 12, .8), rgba(0, 0, 0)); */
+    background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0)); 
+    z-index: 4444;
+    width: auto;
+    position: sticky;
+}
+
+ .bg-middle {
+    background: rgba(252, 251, 250, 0.8);
+ }
