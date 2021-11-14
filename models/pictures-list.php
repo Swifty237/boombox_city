@@ -9,10 +9,12 @@ class Pictures
     public function getPicsList()
     {
         $stmt = $this->$pdo->query('SELECT * FROM pictures');
+
         $pictures = [];
 
         while ($picture = $stmt->fetchObject()) {
-        $pictures[] = $picture;
+            
+            $pictures[] = $picture;
         }
         return $pictures;
     }

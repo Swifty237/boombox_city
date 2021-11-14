@@ -6,4 +6,5 @@ $controller = new MainController;
 
 $page = $controller->mainPage();
 
+
 $control = $controller->switchPage($page);

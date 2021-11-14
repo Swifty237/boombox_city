@@ -10,13 +10,34 @@
     </head>
     <body class="d-flex flex-column align-items-center">
 
-        <h1 class="text-white m-5">Inscription</h1>
+        <h1 class="text-white">Inscription</h1>
 
         <div class="card col-8 inscription-box">
             <form class="form" method="POST">
                 <div class="m-3">
-                    <label for="pseudo" class="form-label text-white">Pseudo</label>
-                    <input type="text" name="pseudo" id="pseudo" class="form-control" required>
+                    <label for="name" class="form-label text-white">Nom</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="m-3">
+                    <label for="firstname" class="form-label text-white">Prénom</label>
+                    <input type="text" name="firstname" id="firstname" class="form-control" required>
+                </div>
+
+                <div class="m-3">
+                    <label for="birthdate" class="form-label text-white">Date de naissance</label>
+                    <input type="date" name="birthdate" id="birthdate" class="form-control" min="1900-01-01" required>
+                </div>
+
+                <div class="m-3">
+                    <label for="sex" class="form-label text-white">Sexe</label>
+
+                    <select class="form-select" name="sex" id="sex" aria-label="choix du sexe">
+                        <option value="">...</option>
+                        <option value="masculin">Masculin</option>
+                        <option value="feminin">Féminin</option>
+                        <option value="autre">Autre</option>
+                    </select>
                 </div>
 
                 <div class="m-3">
@@ -27,11 +48,6 @@
                 <div class="m-3">
                     <label class="mb-3 form-label text-white" for ="email_again">Saisir l'email de nouveau</label>
                     <input name="email_again" id="email_again" class="form-control" required></input>
-                </div>
-
-                <div class="m-3">
-                    <label class="mb-3 form-label text-white" for ="email">Présentation</label>
-                    <input name="presentation" id="presentation" class="form-control"></input>
                 </div>
 
                 <div class="d-flex justify-content-center my-4">

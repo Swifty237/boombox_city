@@ -1,8 +1,8 @@
 <?php
 
-trait MainModel
+trait NewResidentModel
 {
-    public PDO $pdo;
+    private PDO $pdo;
 
     public function __construct()
     {
