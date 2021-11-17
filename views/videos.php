@@ -41,7 +41,7 @@ ob_start();
             </video>
 
             <div class="card-body">
-                <h5 class="card-title"><?= $video->video_name ?></h5>
+                <h5 class="card-title"><?= $video->title ?></h5>
                 <p class="card-text"><?= $video->description ?></p>
             </div>
         </div>

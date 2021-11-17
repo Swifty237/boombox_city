@@ -42,12 +42,12 @@
 
                 <div class="m-3">
                     <label class="mb-3 form-label text-white" for ="email">Email</label>
-                    <input name="email" id="email" class="form-control" required></input>
+                    <input type="email" name="email" id="email" class="form-control" required></input>
                 </div>
 
                 <div class="m-3">
-                    <label class="mb-3 form-label text-white" for ="email_again">Saisir l'email de nouveau</label>
-                    <input name="email_again" id="email_again" class="form-control" required></input>
+                    <label class="mb-3 form-label text-white" for ="confirm-email">Saisir l'email de nouveau</label>
+                    <input type="email" name="confirm-email" id="confirm-email" class="form-control" required></input>
                 </div>
 
                 <div class="d-flex justify-content-center my-4">

@@ -2,7 +2,7 @@
 
 require_once 'main-model.php';
 
-class Connexion 
+class Login 
 {
     use MainModel;
 }

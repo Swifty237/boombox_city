@@ -38,7 +38,7 @@ ob_start();
         <div class="row card m-5 bg-middle">
             <img src="./resources/pictures/<?= $picture->picture_name ?>" alt="" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title"><?= $picture->picture_name ?></h5>
+                <h5 class="card-title"><?= $picture->title ?></h5>
                 <p class="card-text"><?= $picture->description ?></p>
             </div>
         </div>

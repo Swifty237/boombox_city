@@ -20,7 +20,7 @@ class MainController
           $page = 'welcome';
         }
         
-        require_once './models/'.$page.'-list.php';
+        require_once './models/'.$page.'-model.php';
         return $page;
     }
 
@@ -53,7 +53,7 @@ class MainController
             case 'contact': $pageObject = new Contact();
             break;
             
-            case 'connexion': $pageObject = new Connexion();
+            case 'connexion': $pageObject = new Login();
             break;
 
             case 'new-resident':
@@ -65,9 +65,9 @@ class MainController
                     $birthdate = htmlspecialchars(trim($_POST['birthdate']));
                     $sex = htmlspecialchars(trim($_POST['sex']));
                     $email = htmlspecialchars(trim($_POST['email']));
-                    $email_again = htmlspecialchars(trim($_POST['email_again']));
+                    $confirmEmail = htmlspecialchars(trim($_POST['confirm-email']));
 
-                    $pageObject = new NewResident($name, $firstname, $birthdate, $sex, $email, $email_again);
+                    $pageObject = new Register($name, $firstname, $birthdate, $sex, $email, $confirmEmail);
                     $errors = $pageObject->setErrors();
                     $savedDatas = $pageObject->saveFormDatas($errors);
 
@@ -75,17 +75,45 @@ class MainController
 
                         foreach ($savedDatas as $savedData) {
 
-                            echo $savedData;
+                            echo    '<div class="card m-3 inscription-box text-white">
+                                        <div class="card-body">
+                                            <p class="card-text">'.$savedData.'</p>
+                                        </div>
+                                    </div>';
                         }
                     }
 
                     else {
                         
-                        echo $savedDatas;
+                        echo    '<div class="card m-3 inscription-box text-white">
+                                    <div class="card-body">
+                                        <p class="card-text">'.$savedDatas.'</p>
+                                    </div>
+                                </div>';
                     }
-                 }
-            break;
+                }
+                break;
+
+                case 'password':
+
+                    if (isset($_POST['submit'])) {
+
+                        $email = htmlspecialchars(trim($_POST['email']));
+                        $password = htmlspecialchars(trim($_POST['password']));
+                        $confirmPassword = htmlspecialchars(trim($_POST['confirm-password'])); 
+                    
+                        $pageObject = new Password($email, $password, $confirmPassword);
+                        $errors = $pageObject->setErrors();
+                        $savedDatas = $pageObject->saveFormDatas($errors);
+                    }
+
+                    else {
+
+                    }
+                break;
+            }
+            require_once './views/'.$page.'.php';
         }
-        require_once './views/'.$page.'.php';
     }
-}
+    
+    

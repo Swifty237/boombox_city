@@ -8,7 +8,7 @@ class Videos
 
     public function getVideosList()
     {
-        $stmt = $this->$pdo->query('SELECT * FROM videos');
+        $stmt = $this->pdo->query('SELECT * FROM videos');
         $videos = [];
 
         while ($video = $stmt->fetchObject()) {
