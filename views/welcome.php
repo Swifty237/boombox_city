@@ -20,7 +20,7 @@
 
         <div class="row mt-5 justify-content-around mx-5">
             <div class="col-3 card btn-box py-2 rounded-3">
-                <h4 class="text-center"><a class="text-white text-decoration-none" href="index.php?page=connexion">Habitants</a></h4>
+                <h4 class="text-center"><a class="text-white text-decoration-none" href="index.php?page=login">Habitants</a></h4>
             </div>
 
             <div class="col-3 card btn-box py-2 rounded-3">

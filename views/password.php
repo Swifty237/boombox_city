@@ -18,18 +18,13 @@
                 <div class="row justify-content-center">
 
                     <div class="col-10 mb-3">
-                        <label class="form-label text-white" for="email">Email</label>
-                        <input class= "form-control" type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="col-10 mb-3">
                         <label class="form-label text-white" for="password">Choisissez un mot de passe</label>
                         <input class= "form-control" type="password" id="password" name="password" required>
                     </div>
 
                     <div class="col-10 mb-3">
-                        <label class="form-label text-white" for="password_again">Confirmez le mot de passe</label>
-                        <input class= "form-control" type="password" id="password_again" name="password_again" required>
+                        <label class="form-label text-white" for="confirm-password">Confirmez le mot de passe</label>
+                        <input class= "form-control" type="password" id="confirm-password" name="confirm-password" required>
                     </div>
 
                     <button type="submit" class="col-4 btn btn-box mb-2 text-white" name="submit">Valider</button>

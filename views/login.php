@@ -33,7 +33,7 @@
                     </button>
                     
                     <p class="my-3 d-flex justify-content-center">
-                        <a class=text-white href="index.php?page=new-resident">Devenir habitant</a>
+                        <a class=text-white href="index.php?page=register">Devenir habitant</a>
                     </p>
                 </div>
             </form>

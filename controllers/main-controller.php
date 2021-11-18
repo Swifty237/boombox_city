@@ -1,8 +1,13 @@
 <?php
 
+require_once './models/main-model.php';
+require_once './models/functions.php';
+
 class MainController
 {
-    public function mainPage()
+    use MainModel;
+
+    public function getPage()
     {
         $pages = scandir('views');
 
@@ -20,100 +25,105 @@ class MainController
           $page = 'welcome';
         }
         
-        require_once './models/'.$page.'-model.php';
         return $page;
     }
-
-    public function switchPage($page)
+    
+    public function controlPage($page)
     {
         switch ($page) {
-
+            
             case 'home': $pageObject = new Home();
             break;
-        
+            
             case 'videos': 
                 $pageObject = new Videos();
                 $videos = $pageObject->getVideosList();
-            break;
-        
-            case 'pictures':    
-                $pageObject = new Pictures();
-                $pictures = $pageObject->getPicsList();
-            break;
-        
-            case 'help': $pageObject = new Help();
-            break;
-        
-            case 'error': $pageObject = new Error();
-            break;
-        
-            case 'lives': $pageObject = new Lives();
-            break;
-        
-            case 'contact': $pageObject = new Contact();
-            break;
-            
-            case 'connexion': $pageObject = new Login();
-            break;
-
-            case 'new-resident':
-
-                if (isset($_POST['submit'])) {
-
-                    $name = htmlspecialchars(trim($_POST['name']));
-                    $firstname = htmlspecialchars(trim($_POST['firstname']));
-                    $birthdate = htmlspecialchars(trim($_POST['birthdate']));
-                    $sex = htmlspecialchars(trim($_POST['sex']));
-                    $email = htmlspecialchars(trim($_POST['email']));
-                    $confirmEmail = htmlspecialchars(trim($_POST['confirm-email']));
-
-                    $pageObject = new Register($name, $firstname, $birthdate, $sex, $email, $confirmEmail);
-                    $errors = $pageObject->setErrors();
-                    $savedDatas = $pageObject->saveFormDatas($errors);
-
-                    if (is_array($savedDatas)) {
-
-                        foreach ($savedDatas as $savedData) {
-
-                            echo    '<div class="card m-3 inscription-box text-white">
-                                        <div class="card-body">
-                                            <p class="card-text">'.$savedData.'</p>
-                                        </div>
-                                    </div>';
-                        }
-                    }
-
-                    else {
-                        
-                        echo    '<div class="card m-3 inscription-box text-white">
-                                    <div class="card-body">
-                                        <p class="card-text">'.$savedDatas.'</p>
-                                    </div>
-                                </div>';
-                    }
-                }
                 break;
-
-                case 'password':
-
-                    if (isset($_POST['submit'])) {
-
-                        $email = htmlspecialchars(trim($_POST['email']));
-                        $password = htmlspecialchars(trim($_POST['password']));
-                        $confirmPassword = htmlspecialchars(trim($_POST['confirm-password'])); 
+                
+                case 'pictures':    
+                    $pageObject = new Pictures();
+                    $pictures = $pageObject->getPicsList();
+                    break;
                     
-                        $pageObject = new Password($email, $password, $confirmPassword);
-                        $errors = $pageObject->setErrors();
-                        $savedDatas = $pageObject->saveFormDatas($errors);
-                    }
+                    case 'help': $pageObject = new Help();
+                    break;
+                    
+                    case 'errors': $pageObject = new Errors();
+                    break;
+                    
+                    case 'lives': $pageObject = new Lives();
+                    break;
+                    
+                    case 'contact': $pageObject = new Contact();
+                    break;
+                    
+                    case 'login': $pageObject = new Login();
+                    break;
+                    
+                    case 'register':
+                        
+                        if (isset($_POST['submit'])) {
+                            
+                            $name = htmlspecialchars(trim($_POST['name']));
+                            $firstname = htmlspecialchars(trim($_POST['firstname']));
+                            $birthdate = htmlspecialchars(trim($_POST['birthdate']));
+                            $sex = htmlspecialchars(trim($_POST['sex']));
+                            $email = htmlspecialchars(trim($_POST['email']));
+                            $confirmEmail = htmlspecialchars(trim($_POST['confirm-email']));
 
-                    else {
+                            $token = getToken(60);
+                            
+                            $pageObject = new Register($name, $firstname, $birthdate, $sex, $email, $confirmEmail, $token, $this->pdo);
+                            
+                            $result = $pageObject->verifyEmail();
+                            $errors = $pageObject->getErrors($result);
+                            $savedDatas = $pageObject->setFormDatas($errors);
 
-                    }
-                break;
-            }
-            require_once './views/'.$page.'.php';
+                            
+                            if (is_array($savedDatas)) {
+                                
+                                foreach ($savedDatas as $savedData) {
+                                    
+                                    echo    '<div class="card m-3 inscription-box text-white">
+                                    <div class="card-body">
+                                    <p class="card-text">'.$savedData.'</p>
+                                    </div>
+                                    </div>';
+                                }
+                            }
+                            
+                            else {
+                                
+                                echo    '<div class="card m-3 inscription-box text-white">
+                                <div class="card-body">
+                                <p class="card-text">'.$savedDatas.'</p>
+                                </div>
+                                </div>';
+                            }
+                        }
+                        break;
+                        
+                        case 'password':
+                            
+                            if (isset($_POST['submit'])) {
+                                
+                                $password = password_hash(htmlspecialchars(trim($_POST['password'])), PASSWORD_BCRYPT);
+                                $confirmPassword = password_hash(htmlspecialchars(trim($_POST['confirm-password'])), PASSWORD_BCRYPT);
+                                $dateValidation = date(time()); 
+                                
+                                $pageObject = new Password($password, $confirmPassword, $dateValidation, $this->pdo);
+
+                                $result = $pageObject->tokenValidation();
+                                $errors = $pageObject->getErrors($result);
+                                $savedDatas = $pageObject->setFormDatas($errors);
+                            }
+                            
+                            else {
+                                
+                            }
+                            break;
         }
+        
+        require_once './views/'.$page.'.php';                  
     }
-    
-    
+}

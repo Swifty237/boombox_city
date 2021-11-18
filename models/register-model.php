@@ -1,7 +1,5 @@
 <?php
 
-//phpinfo();
-
 require_once 'main-model.php';
 
 class Register 
@@ -13,18 +11,31 @@ class Register
     private string $sex;
     private string $email;
     private string $confirmEmail;
+    private string $token;
     
-    public function __construct($name, $firstname, $birthdate, $sex, $email, $confirmEmail)
+    public function __construct($name, $firstname, $birthdate, $sex, $email, $confirmEmail, $token, $pdo)
     {   
+        $this->pdo = $pdo;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->birthdate = $birthdate;
         $this->sex = $sex;
         $this->email = $email;
         $this->confirmEmail = $confirmEmail;
+
+        $this->token = $token;
+    }
+
+    public function verifyEmail()
+    {
+        $e = ['email' => $this->email];
+        $req = $this->pdo->prepare('SELECT id From residents WHERE email = :email');
+        $req->execute($e);
+        $result = $req->fetch();
+        return $result;
     }
         
-    public function setErrors()
+    public function getErrors($result)
     {
         $errors = [];
 
@@ -33,59 +44,62 @@ class Register
             $errors['empty'] = "Veuillez renseigner tous les champs";
         }
 
+        if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+
+             $errors['email'] = "Veuillez saisir une adresse email valide";
+        }
+
         if ($this->email != $this->confirmEmail) {
             
             $errors['different'] = "Les adresses emails saisies ne correspondent pas";
+        }
+
+        if ($result != NULL) {
+
+            $errors['available'] = "L'adresse email saisie est déjà utilisé par un autre habitant";
         }
                 
         return $errors;
     }
 
-    public function saveFormDatas($errors) {
+    public function setFormDatas($errors) {
         
         if (empty($errors)) {
 
-            // try {
-            //     $pdo = new PDO('mysql:host=localhost;dbname=boombox_city;charset=utf8', 'root', '');
-            // }
-            // catch (PDOException $e) {
-            //     exit('Erreur :'.$e->getMessage());
-            // }
-
-            // $datas = [
-            //     'name'      =>  $this->name,
-            //     'firstname' =>  $this->firstname,
-            //     'birthdate' =>  $this->birthdate,
-            //     'sex'       =>  $this->sex,
-            //     'email'     =>  $this->email
-            // ];
+            $datas = [
+                'name'      =>  $this->name,
+                'firstname' =>  $this->firstname,
+                'birthdate' =>  $this->birthdate,
+                'sex'       =>  $this->sex,
+                'email'     =>  $this->email,
+                'token'     =>  $this->token
+            ];
             
-            // $sql = "INSERT INTO residents (name, firstname, birthdate, sex, email) VALUE (:name, :firstname, :birthdate, :sex, :email)";
+            $req = "INSERT INTO residents (name, firstname, birthdate, sex, email, token) VALUE (:name, :firstname, :birthdate, :sex, :email, :token)";
 
-            // $stmt = $pdo->prepare($sql);
-            // $stmt->execute($datas);
+            $stmt = $this->pdo->prepare($req);
+            $stmt->execute($datas);
+            $user_id = $this->pdo->lastInsertId();
 
-            $subject = 'Création du compte habitant de Boombox City';
-            $message = '<!DOCTYPE html>
-                            <html lang="fr">
+            $subject = "Création du compte habitant de Boombox City";
+            $message = "<!DOCTYPE html>
+                            <html lang='fr'>
                                 <head>
-                                  <meta charset="UTF-8">    
+                                  <meta charset='UTF-8'>    
                                 </head>
                                 <body>
-                                  Cliquez sur le <a href="http://localhost/boombox_city/index.php?page=password">lien</a> 
-                                  <br>Saisissez votre identifiant : '.$this->email.' et choisissez votre mot de passe.
+                                  Cliquez sur le <a href='http://localhost/boombox_city/index.php?page=password&id=$user_id&token=$this->token'>lien</a> 
+                                  <br>Saisissez votre identifiant : $this->email et choisissez votre mot de passe.
                                 </body>
-                            </html>';
+                            </html>";
 
-            $header  = 'MIME Version 1.0\r\n';
-            $header .= 'Content-type: text/html; charset=UTF-8\r\n';
-            $header .= 'From: yannickkamdem@example.com'.'\r\n'.'Reply-to: yannickkamdemkouam@yahoo.fr'.'\r\n'.'X-Mailer: PHP/'.phpversion();
+            $header  = "MIME Version 1.0\r\n";
+            $header .= "Content-type: text/html; charset=UTF-8\r\n";
+            $header .= "From: yannickkamdem@example.com"."\r\n"."Reply-to: yannickkamdemkouam@yahoo.fr"."\r\n"."X-Mailer: PHP/".phpversion();
             
-            if(mail($this->email, $subject, $message, $header));
+             mail($this->email, $subject, $message, $header);
 
-            {
-                $savedDatas = "Données enregistrées <br> Un email vous a été envoyé à l'adresse : ".$this->email."<br> Cliquez sur le lien qui s'y trouve";
-            }
+                $savedDatas = "Données enregistrées <br> Un email vous a été envoyé à l'adresse : ".$this->email."<br> Ouvrez le et cliquez sur le lien<br><a href='index.php?page=welcome'>Accueil</a>";
         }
 
         else {
