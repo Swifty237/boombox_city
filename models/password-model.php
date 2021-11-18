@@ -19,7 +19,7 @@ class Password
         $this->pdo = $pdo;
     }
 
-    public function tokenValidation()
+    public function verifyToken()
     {
         
         $datas = ['id' => $_GET['id']];
@@ -30,9 +30,18 @@ class Password
         $stmt->execute($datas);
         $tokenId = $stmt->fetchObject();
 
+        session_start();
+
         if ($tokenId->token == $token) {
             
             $result = TRUE;
+        }
+
+        else {
+
+            $_SESSION['flash']['danger'] = "Ce token n'est plus valide";
+
+            header('Location:http://localhost/boombox_city/index.php?page=login');
         }
 
         return $result;
@@ -42,14 +51,24 @@ class Password
     {
         $errors = [];
 
+        $stmt = $this->pdo->prepare('SELECT email FROM residents WHERE id = :id');
+        $stmt->execute(['id' => $_GET['id']]);
+        $emailObject = $stmt->fetchObject();
+
         if ($result == FALSE) {
 
-            $errors['token'] = "Ceci n'est pas une url valide";
+            $errors['token'] = $_SESSION['flash']['danger'];
+            unset($_SESSION['flash']);
         }
 
-        if (empty($this->password) || empty($this->confirmPassword)) {
+        if (empty($this->email) || empty($this->password) || empty($this->confirmPassword)) {
             
             $errors['empty'] = "Veuillez renseigner tous les champs";
+        }
+
+        if($this->email != $emailObject->email) {
+
+            $errors['email'] = "L'adresse email est invalide";
         }
         
         if ($this->password != $this->confirmPassword) {
@@ -61,7 +80,7 @@ class Password
     }
     
 
-    public function setFormDatas($errors, $email)
+    public function setFormDatas($errors)
     {
         if (empty($errors))  {
 
@@ -75,9 +94,12 @@ class Password
             $stmt = $this->pdo->prepare($req);
             $stmt->execute($datas);
 
-            session_start();
-            $_SESSION['resident'] = $email; 
-
+            $sql = $this->pdo->prepare('SELECT * FROM residents WHERE id = :id');
+            $sql->execute(['id' => $_GET['id']]);
+            $residentObject = $sql->fetchObject();
+            
+            $_SESSION['resident'] = $residentObject;
+        
             header('Location:http://localhost/boombox_city/index.php?page=home');
         }
 

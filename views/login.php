@@ -9,7 +9,7 @@
         <title> Boombox City | Connexion </title>
     </head>
 
-    <body class="d-flex flex-column mt-5">
+    <body class="d-flex flex-column mt-5 align-items-center">
         
         <h3 class="text-center text-white mb-5">Connexion habitant</h3>
 
@@ -25,12 +25,7 @@
                         <input class= "form-control" type="password" id="password" name="password" required>
                     </div>
 
-                    <button type="submit" class="col-4 btn btn-box mb-2 text-white" name="submit">
-                        Entrer
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                        </svg>
-                    </button>
+                    <button type="submit" class="col-4 btn btn-box mb-2 text-white" name="submit">Entrer</button>
                     
                     <p class="my-3 d-flex justify-content-center">
                         <a class=text-white href="index.php?page=register">Devenir habitant</a>

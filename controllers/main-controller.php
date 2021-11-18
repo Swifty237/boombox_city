@@ -17,7 +17,7 @@ class MainController
             $page = $_GET['page'];
             }
             else {
-            $page = 'error';
+            $page = 'errors';
             }
         }
 
@@ -57,7 +57,42 @@ class MainController
                     case 'contact': $pageObject = new Contact();
                     break;
                     
-                    case 'login': $pageObject = new Login();
+                    case 'login':
+                        
+                        if (isset($_POST['submit'])) {
+
+                            $email = htmlspecialchars(trim($_POST['email']));
+                            $password = htmlspecialchars(trim($_POST['password']));
+
+                            $pageObject = new Login($email, $password, $this->pdo);
+
+                            $errors = $pageObject->getErrors();
+                            $displays = $pageObject->VerifyUserSession($errors);
+
+                            if (is_array($displays)) {
+                                
+                                foreach ($displays as $display) {
+                                    
+                                    echo    '<div class="card m-3 inscription-box text-white">
+                                    <div class="card-body">
+                                    <p class="card-text">'.$display.'</p>
+                                    </div>
+                                    </div>';
+                                }
+                            }
+                            
+                            else {
+                                
+                                echo    '<div class="card m-3 inscription-box text-white">
+                                <div class="card-body">
+                                <p class="card-text">'.$displays.'</p>
+                                </div>
+                                </div>';
+    
+                                unset($_SESSION['flash']['success']);   
+                            }
+                        }
+                        
                     break;
                     
                     case 'register':
@@ -113,9 +148,9 @@ class MainController
                                 
                                 $pageObject = new Password($password, $confirmPassword, $dateValidation, $email, $this->pdo);
 
-                                $result = $pageObject->tokenValidation();
+                                $result = $pageObject->verifyToken();
                                 $errors = $pageObject->getErrors($result);
-                                $savedDatas = $pageObject->setFormDatas($errors, $email);
+                                $savedDatas = $pageObject->setFormDatas($errors);
 
                                 if (is_array($savedDatas)) {
                                 
