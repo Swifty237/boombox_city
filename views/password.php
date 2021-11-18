@@ -9,7 +9,7 @@
         <title> Boombox City | Connexion </title>
     </head>
 
-    <body class="d-flex flex-column mt-5">
+    <body class="d-flex flex-column mt-5 align-items-center">
         
         <h3 class="text-center text-white mb-5">Première connexion</h3>
 

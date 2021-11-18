@@ -79,7 +79,6 @@ class MainController
                             $errors = $pageObject->getErrors($result);
                             $savedDatas = $pageObject->setFormDatas($errors);
 
-                            
                             if (is_array($savedDatas)) {
                                 
                                 foreach ($savedDatas as $savedData) {
@@ -107,20 +106,38 @@ class MainController
                             
                             if (isset($_POST['submit'])) {
                                 
-                                $password = password_hash(htmlspecialchars(trim($_POST['password'])), PASSWORD_BCRYPT);
-                                $confirmPassword = password_hash(htmlspecialchars(trim($_POST['confirm-password'])), PASSWORD_BCRYPT);
-                                $dateValidation = date(time()); 
+                                $password = htmlspecialchars(trim($_POST['password']));
+                                $confirmPassword = htmlspecialchars(trim($_POST['confirm-password']));
+                                $dateValidation = date('Y-m-d');
                                 
                                 $pageObject = new Password($password, $confirmPassword, $dateValidation, $this->pdo);
 
                                 $result = $pageObject->tokenValidation();
                                 $errors = $pageObject->getErrors($result);
                                 $savedDatas = $pageObject->setFormDatas($errors);
+
+                                if (is_array($savedDatas)) {
+                                
+                                    foreach ($savedDatas as $savedData) {
+                                        
+                                        echo '<div class="card m-3 inscription-box text-white">
+                                        <div class="card-body">
+                                        <p class="card-text">'.$savedData.'</p>
+                                        </div>
+                                        </div>';
+                                    }
+                                }
+                                
+                                else {
+                                    
+                                    echo '<div class="card m-3 inscription-box text-white">
+                                    <div class="card-body">
+                                    <p class="card-text">'.$savedDatas.'</p>
+                                    </div>
+                                    </div>';
+                                }
                             }
                             
-                            else {
-                                
-                            }
                             break;
         }
         

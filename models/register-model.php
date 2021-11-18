@@ -79,6 +79,7 @@ class Register
 
             $stmt = $this->pdo->prepare($req);
             $stmt->execute($datas);
+            
             $user_id = $this->pdo->lastInsertId();
 
             $subject = "Création du compte habitant de Boombox City";
@@ -88,8 +89,9 @@ class Register
                                   <meta charset='UTF-8'>    
                                 </head>
                                 <body>
-                                  Cliquez sur le <a href='http://localhost/boombox_city/index.php?page=password&id=$user_id&token=$this->token'>lien</a> 
-                                  <br>Saisissez votre identifiant : $this->email et choisissez votre mot de passe.
+                                    <p>
+                                        Cliquez sur le <a href='http://localhost/boombox_city/index.php?page=password&id=$user_id&token=$this->token'>lien</a>, et choisissez un mot de passe.
+                                    <p>
                                 </body>
                             </html>";
 
@@ -99,7 +101,7 @@ class Register
             
              mail($this->email, $subject, $message, $header);
 
-                $savedDatas = "Données enregistrées <br> Un email vous a été envoyé à l'adresse : ".$this->email."<br> Ouvrez le et cliquez sur le lien<br><a href='index.php?page=welcome'>Accueil</a>";
+                $savedDatas = "Données enregistrées <br> Un email vous a été envoyé à l'adresse : ".$this->email."<br> Ouvrez le et cliquez sur le lien<br><a href='index.php?page=welcome'>Revenir à l'accueil</a>";
         }
 
         else {

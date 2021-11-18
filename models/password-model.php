@@ -8,7 +8,7 @@ class Password
     private string $email;
     private string $password;
     private string $confirmPassword;
-    private $dateValidation;
+    private string $dateValidation;
 
     public function __construct($password, $confirmPassword, $dateValidation, $pdo)
     {
@@ -65,14 +65,23 @@ class Password
         if (empty($errors))  {
 
             $datas = [
-                'password'      =>  $this->password,
-                'date-validation' =>  $this->dateValidation
+                'password'  =>  password_hash($this->password, PASSWORD_BCRYPT),
+                'date'      =>  $this->dateValidation
             ];
             
-            $req = "INSERT INTO residents (password, date_validation) VALUE (:password, :date_validation)";
+            $req = "UPDATE residents SET password = :password, date_validation = :date WHERE id = ".$_GET['id'];
 
             $stmt = $this->pdo->prepare($req);
             $stmt->execute($datas);
+
+            header('Location:http://localhost/boombox_city/index.php?page=home');
         }
+
+        else {
+            
+            $savedDatas = $errors;
+        }
+
+        return $savedDatas;
     }
 }
