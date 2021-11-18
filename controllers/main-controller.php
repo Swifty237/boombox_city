@@ -106,15 +106,16 @@ class MainController
                             
                             if (isset($_POST['submit'])) {
                                 
+                                $email = htmlspecialchars(trim($_POST['email']));
                                 $password = htmlspecialchars(trim($_POST['password']));
                                 $confirmPassword = htmlspecialchars(trim($_POST['confirm-password']));
-                                $dateValidation = date('Y-m-d');
+                                $dateValidation = date('Y-m-d H:i:s');
                                 
-                                $pageObject = new Password($password, $confirmPassword, $dateValidation, $this->pdo);
+                                $pageObject = new Password($password, $confirmPassword, $dateValidation, $email, $this->pdo);
 
                                 $result = $pageObject->tokenValidation();
                                 $errors = $pageObject->getErrors($result);
-                                $savedDatas = $pageObject->setFormDatas($errors);
+                                $savedDatas = $pageObject->setFormDatas($errors, $email);
 
                                 if (is_array($savedDatas)) {
                                 

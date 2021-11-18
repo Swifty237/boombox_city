@@ -5,16 +5,17 @@ require_once 'main-model.php';
 class Password 
 {
     use MainModel;
-    private string $email;
     private string $password;
     private string $confirmPassword;
     private string $dateValidation;
+    private string $email;
 
-    public function __construct($password, $confirmPassword, $dateValidation, $pdo)
+    public function __construct($password, $confirmPassword, $dateValidation, $email, $pdo)
     {
         $this->password = $password;
         $this->confirmPassword = $confirmPassword;
         $this->dateValidation = $dateValidation;
+        $this->email = $email;
         $this->pdo = $pdo;
     }
 
@@ -60,7 +61,7 @@ class Password
     }
     
 
-    public function setFormDatas($errors)
+    public function setFormDatas($errors, $email)
     {
         if (empty($errors))  {
 
@@ -69,10 +70,13 @@ class Password
                 'date'      =>  $this->dateValidation
             ];
             
-            $req = "UPDATE residents SET password = :password, date_validation = :date WHERE id = ".$_GET['id'];
+            $req = "UPDATE residents SET password = :password, token = NULL, date_validation = :date WHERE id = ".$_GET['id'];
 
             $stmt = $this->pdo->prepare($req);
             $stmt->execute($datas);
+
+            session_start();
+            $_SESSION['resident'] = $email; 
 
             header('Location:http://localhost/boombox_city/index.php?page=home');
         }

@@ -90,7 +90,8 @@ class Register
                                 </head>
                                 <body>
                                     <p>
-                                        Cliquez sur le <a href='http://localhost/boombox_city/index.php?page=password&id=$user_id&token=$this->token'>lien</a>, et choisissez un mot de passe.
+                                        Cliquez sur le <a href='http://localhost/boombox_city/index.php?page=password&id=$user_id&token=$this->token'>lien</a>, 
+                                        entrez votre identifiant : $this->email et choisissez un mot de passe.
                                     <p>
                                 </body>
                             </html>";

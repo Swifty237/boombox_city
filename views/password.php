@@ -18,6 +18,11 @@
                 <div class="row justify-content-center">
 
                     <div class="col-10 mb-3">
+                        <label class="form-label text-white" for="email">Identifiant</label>
+                        <input class= "form-control" type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="col-10 mb-3">
                         <label class="form-label text-white" for="password">Choisissez un mot de passe</label>
                         <input class= "form-control" type="password" id="password" name="password" required>
                     </div>
