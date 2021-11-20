@@ -9,7 +9,7 @@
         <title> Boombox City | <?php echo $title; ?> </title>
     </head>
     <body>
-        <header class="row justify-content-around navigation align-items-center">
+        <header class="row justify-content-center navigation">
             <nav class="navbar navbar-expand-lg navbar-dark col-8 col-lg-10 d-flex">
                 <div class="row justify-content-center">
                     <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=home">
@@ -55,8 +55,11 @@
                 </div>
             </nav> 
             
-            <div class="col-3 col-lg-2 card profil d-flex justify-content-center align-items-center">
-                <p class="card-title"><a href="index.php?page=register">Devenir habitant</a></p>
+            <div class="col-3 col-lg-2 card profil d-flex align-self-center">
+                <img class="card-img-top d-none d-lg-flex" src="./resources/pictures/profil/profil5.jpg" alt="photo de profil">
+                <div class="card-body">
+                    <h5 class="card-title">Pseudo</h5>
+                </div>
             </div>
         </header>
 

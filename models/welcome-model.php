@@ -1,8 +1,8 @@
 <?php
 
-require_once 'main-model.php';
+// require_once 'main-model.php';
 
-class Welcome 
-{
-    use MainModel;
-}
+// class Welcome 
+// {
+//     use MainModel;
+// }

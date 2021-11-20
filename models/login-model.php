@@ -1,6 +1,6 @@
 <?php
 
-require_once 'main-model.php';
+require_once './models/main-model.php';
 
 class Login 
 {
@@ -18,46 +18,44 @@ class Login
     public function getErrors()
     {
         $errors = [];
+        $datas = [
+            'email' => $this->email,
+        ];
+
+        $req = "SELECT * FROM residents WHERE email = :email";
+        $stmt = $this->pdo->prepare($req);
+        $stmt->execute($datas);
+        $residentObjectDatas = $stmt->fetchObject();
 
         if (empty($this->email) || empty($this->password)) {
 
             $errors['empty'] = "Veuillez renseigner tous les champs";
         }
 
+        if (!password_verify($this->password, $residentObjectDatas->password)) {
+        
+            $errors['password'] = "Les identifiants saisis ne correspondent pas";
+        }
+
+        else {
+
+            session_start();
+            $_SESSION['resident'] = $residentObjectDatas;
+            $_SESSION['flash']['success'] = "Vous êtes connecté";
+
+            header('Location:http://localhost/boombox_city/resident/index.php?page=resident-home');
+
+        }
+
         return $errors;
     }
 
-    public function verifyUserSession($errors)
+    public function setSession($errors)
     {   
-        session_start();
-        $_SESSION['flash']['success'] = NULL;
-
         if (empty($errors)) {
 
-            $datas = [
-                'email' => $this->email,
-            ];
-
-            $req = "SELECT * FROM residents WHERE email = :email";
-            $stmt = $this->pdo->prepare($req);
-            $stmt->execute($datas);
-            $residentObjectDatas = $stmt->fetchObject();
-
-            if (password_verify($this->password, $residentObjectDatas->password)) {
-            
-                $_SESSION['resident'] = $residentObjectDatas;
-                $_SESSION['flash']['success'] = "Vous êtes connecté";
-
-                $errors = $_SESSION['flash']['success'];
-
-                header('Location:http://localhost/boombox_city/index.php?page=home');
-            }
-
-            else {
-                $errors['password'] = "Les identifiants saisis ne correspondent pas";
-            }
-
-            $displays = $errors;
+            $displays = $_SESSION['flash']['success'];
+            unset($_SESSION['flash']['success']);
         }
 
         else {

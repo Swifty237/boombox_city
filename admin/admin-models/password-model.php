@@ -21,6 +21,7 @@ class Password
 
     public function verifyToken()
     {
+        
         $datas = ['id' => $_GET['id']];
         $token = $_GET['token'];
         $result = FALSE;
@@ -38,7 +39,7 @@ class Password
 
         else {
 
-            $_SESSION['flash'] = "Ce token n'est plus valide";
+            $_SESSION['flash']['danger'] = "Ce token n'est plus valide";
 
             header('Location:http://localhost/boombox_city/index.php?page=login');
         }
@@ -56,7 +57,7 @@ class Password
 
         if ($result == FALSE) {
 
-            $errors['token'] = $_SESSION['flash'];
+            $errors['token'] = $_SESSION['flash']['danger'];
             unset($_SESSION['flash']);
         }
 
@@ -73,11 +74,6 @@ class Password
         if ($this->password != $this->confirmPassword) {
             
             $errors['different'] = "Les mots de passes saisis ne correspondent pas";
-        }
-
-        if (!password_verify($this->password, $emailObject->password) && ($emailObject->password != NULL)) {
-
-            $errors['password'] = "Vous avez déjà choisi votre mot de passe";
         }
 
         return $errors;
@@ -103,7 +99,8 @@ class Password
             $residentObject = $sql->fetchObject();
             
             $_SESSION['resident'] = $residentObject;
-            $savedDatas = "Vous êtes connecté";
+        
+            header('Location:http://localhost/boombox_city/index.php?page=home');
         }
 
         else {

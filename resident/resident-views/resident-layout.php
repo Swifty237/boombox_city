@@ -4,16 +4,16 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./css/bootstrap.min.css">
-        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/style.css">
         <title> Boombox City | <?php echo $title; ?> </title>
     </head>
     <body>
-        <header class="row justify-content-around navigation align-items-center">
+        <header class="row justify-content-center navigation">
             <nav class="navbar navbar-expand-lg navbar-dark col-8 col-lg-10 d-flex">
                 <div class="row justify-content-center">
                     <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=home">
-                        <img class="logo" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
+                        <img class="logo" src="../resources/pictures/logo/boombox_logo.png" alt="logo">
                     </a>
                     
                     <button class="navbar-toggler btn btn-outline-dark my-3 col-3" type="button" data-bs-toggle="collapse" data-bs-target="#listNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,12 +22,12 @@
 
                     <div class="collapse navbar-collapse col-5" id="listNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'home')? 'page' : ''; ?>" href="index.php?page=home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'videos')? 'page' : ''; ?>" href="index.php?page=videos">Vidéos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'pictures')? 'page' : ''; ?>" href="index.php?page=pictures">Photos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'lives')? 'page' : ''; ?>" href="index.php?page=lives">Lives</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'contact')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'contact')? 'page' : ''; ?>" href="index.php?page=contact">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'help')? 'page' : ''; ?>" href="index.php?page=help">Aide</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'home')? 'page' : ''; ?>" href="index.php?page=resident-home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'videos')? 'page' : ''; ?>" href="index.php?page=resident-videos">Vidéos</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'pictures')? 'page' : ''; ?>" href="index.php?page=resident-pictures">Photos</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'lives')? 'page' : ''; ?>" href="index.php?page=resident-lives">Lives</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'contact')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'contact')? 'page' : ''; ?>" href="index.php?page=resident-contact">Contact</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'help')? 'page' : ''; ?>" href="index.php?page=resident-help">Aide</a></li>
                         </ul>
                     </div>
 
@@ -55,12 +55,15 @@
                 </div>
             </nav> 
             
-            <div class="col-3 col-lg-2 card profil d-flex justify-content-center align-items-center">
-                <p class="card-title"><a href="index.php?page=register">Devenir habitant</a></p>
+            <div class="col-3 col-lg-2 card profil d-flex align-self-center">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $_SESSION['resident']->name ?></h5>
+                    <p><a href="http://localhost/boombox_city/index?page=logout">Se déconnecter</a></p>
+                </div>
             </div>
         </header>
 
-        <?php echo $content; ?>
+        <?php echo $content;?>
         
         <footer class="row footbar">
             <div class="mx-4">
@@ -91,3 +94,4 @@
         </script>
     </body>
 </html>
+
