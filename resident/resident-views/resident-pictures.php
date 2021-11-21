@@ -1,5 +1,17 @@
 <?php
 ob_start();
+session_start();
+
+if (!isset($_SESSION['resident'])) {
+
+    $_SESSION['flash'] = ['danger' => "Vous devez être connecté pour accéder à cette page"];
+
+    header('Location:http://localhost/boombox_city/index.php?page=login');
+
+    exit();
+}
+
+else {
 ?>
 
 <div class="row block-container justify-content-center">
@@ -73,3 +85,4 @@ $title = 'Photos';
 $content = ob_get_clean();
 
 require_once 'resident-layout.php';
+}

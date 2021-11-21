@@ -31,7 +31,7 @@ class Register
         $e = ['email' => $this->email];
         $req = $this->pdo->prepare('SELECT id From residents WHERE email = :email');
         $req->execute($e);
-        $result = $req->fetch();
+        $result = $req->fetchObject();
         return $result;
     }
         
@@ -65,6 +65,8 @@ class Register
     public function setFormDatas($errors) {
         
         if (empty($errors)) {
+
+            $displays = NULL;
 
             $datas = [
                 'name'      =>  $this->name,
@@ -100,16 +102,19 @@ class Register
             $header .= "Content-type: text/html; charset=UTF-8\r\n";
             $header .= "From: yannickkamdem@example.com"."\r\n"."Reply-to: yannickkamdemkouam@yahoo.fr"."\r\n"."X-Mailer: PHP/".phpversion();
             
-             mail($this->email, $subject, $message, $header);
+            mail($this->email, $subject, $message, $header);
 
-                $savedDatas = "Données enregistrées <br> Un email vous a été envoyé à l'adresse : ".$this->email."<br> Ouvrez le et cliquez sur le lien<br><a href='index.php?page=welcome'>Revenir à l'accueil</a>";
+            session_start();
+            $_SESSION['flash'] = ["success" => "Données enregistrées <br> Un email vous a été envoyé à l'adresse : ".$this->email."<br> Ouvrez le et cliquez sur le lien"];
+
+            
         }
 
         else {
             
-            $savedDatas = $errors;
+            $displays = $errors;
         }
 
-        return $savedDatas;
+        return $displays;
     }
 }

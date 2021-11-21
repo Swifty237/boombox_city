@@ -18,14 +18,13 @@ class Login
     public function getErrors()
     {
         $errors = [];
-        $datas = [
-            'email' => $this->email,
-        ];
+        $datas = ['email' => $this->email];
 
         $req = "SELECT * FROM residents WHERE email = :email";
         $stmt = $this->pdo->prepare($req);
         $stmt->execute($datas);
         $residentObjectDatas = $stmt->fetchObject();
+        //return $residentObjectDatas;   => problème avec le navigateur google quand je garde le return mais pas de souci sur Mozilla
 
         if (empty($this->email) || empty($this->password)) {
 
@@ -34,17 +33,7 @@ class Login
 
         if (!password_verify($this->password, $residentObjectDatas->password)) {
         
-            $errors['password'] = "Les identifiants saisis ne correspondent pas";
-        }
-
-        else {
-
-            session_start();
-            $_SESSION['resident'] = $residentObjectDatas;
-            $_SESSION['flash']['success'] = "Vous êtes connecté";
-
-            header('Location:http://localhost/boombox_city/resident/index.php?page=resident-home');
-
+            $errors['password'] = "Le login ou le mot de passe est incorrect";
         }
 
         return $errors;
@@ -54,8 +43,19 @@ class Login
     {   
         if (empty($errors)) {
 
-            $displays = $_SESSION['flash']['success'];
-            unset($_SESSION['flash']['success']);
+            $displays = NULL;
+
+            $datas = ['email' => $this->email];
+
+            $req = "SELECT * FROM residents WHERE email = :email";
+            $stmt = $this->pdo->prepare($req);
+            $stmt->execute($datas);
+            $residentObjectDatas = $stmt->fetchObject();
+
+            session_start();
+
+            $_SESSION['resident'] = $residentObjectDatas;
+            $_SESSION['flash'] = ["success" => "Vous êtes connecté"];  
         }
 
         else {

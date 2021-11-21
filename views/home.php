@@ -1,5 +1,25 @@
 <?php
 ob_start();
+
+session_start();
+
+if (isset($_SESSION['resident'])) {
+
+    unset($_SESSION['resident']);
+    $_SESSION['flash'] = ["visiteur" => "Vous êtes maintenant déconnecté"];
+}
+
+if (isset($_SESSION['flash']['visiteur'])) {
+    
+    echo    '<div class="card m-3 validation text-white">
+                <div class="card-body">
+                    <p class="card-text">'.$_SESSION['flash']['visiteur'].'</p>
+                </div>
+            </div>';
+
+    unset($_SESSION['flash']['visiteur']);
+}
+
 ?>
         <div class="row block-container justify-content-center">
             <div class="col-2 mt-4 left-side d-none d-lg-block">

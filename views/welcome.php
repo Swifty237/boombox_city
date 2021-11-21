@@ -1,3 +1,31 @@
+<?php
+session_start();
+
+if (isset($_SESSION['flash']['danger'])) {
+
+    echo    '<div class="card m-3 errors text-white">
+                <div class="card-body">
+                    <p class="card-text">'.$_SESSION['flash']['danger'].'</p>
+                </div>
+            </div>';
+            
+    unset($_SESSION['flash']['danger']);
+}
+
+if (isset($_SESSION['flash']['success'])) {
+
+    echo    '<div class="card m-3 validation text-white">
+                <div class="card-body">
+                    <p class="card-text">'.$_SESSION['flash']['success'].'</p>
+                </div>
+            </div>';
+            
+    unset($_SESSION['flash']['success']);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>

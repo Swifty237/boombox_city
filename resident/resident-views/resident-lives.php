@@ -1,8 +1,18 @@
 <?php
 ob_start();
-?>
+session_start();
 
-<h3 class="bg-light text-center">Lives</h3>
+if (!isset($_SESSION['resident'])) {
+
+    $_SESSION['flash'] = ['danger' => "Vous devez être connecté pour accéder à cette page"];
+
+    header('Location:http://localhost/boombox_city/index.php?page=login');
+
+    exit();
+}
+
+else {
+?>
 
 <div class="row block-container justify-content-center">
             <div class="col-2 mt-4 left-side d-none d-lg-block">
@@ -73,3 +83,4 @@ $title = 'Lives';
 $content = ob_get_clean();
 
 require_once 'resident-layout.php';
+}

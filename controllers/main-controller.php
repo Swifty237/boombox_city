@@ -106,10 +106,12 @@ class MainController
                 if (isset($_POST['submit'])) {
                     $email = htmlspecialchars(trim($_POST['email']));
                     $password = htmlspecialchars(trim($_POST['password']));
+
                     $pageObject = new Login($email, $password, $this->pdo);
                     $errors = $pageObject->getErrors();
                     $displays = $pageObject->setSession($errors);
-                    if (is_array($displays)) {
+
+                    if (!empty($displays)) {
                             
                         foreach ($displays as $display) {
                             
@@ -120,16 +122,11 @@ class MainController
                             </div>';
                         }
                     }
-                        
-                    else {
-                        
-                        echo    '<div class="card m-3 validation text-white">
-                        <div class="card-body">
-                        <p class="card-text">'.$displays.'</p>
-                        </div>
-                        </div>';
 
-                        unset($_SESSION['flash']['success']);   
+                    else {
+
+                        header('Location:http://localhost/boombox_city/resident/index.php?page=resident-home');
+                        exit();
                     }
                 } 
                     
@@ -151,15 +148,15 @@ class MainController
                         
                     $result = $pageObject->verifyEmail();
                     $errors = $pageObject->getErrors($result);
-                    $savedDatas = $pageObject->setFormDatas($errors);
+                    $displays = $pageObject->setFormDatas($errors);
 
-                    if (is_array($savedDatas)) {
+                    if (!empty($displays)) {
                             
-                        foreach ($savedDatas as $savedData) {
+                        foreach ($displays as $display) {
                                 
                             echo    '<div class="card m-3 errors text-white">
                             <div class="card-body">
-                            <p class="card-text">'.$savedData.'</p>
+                            <p class="card-text">'.$display.'</p>
                             </div>
                             </div>';
                         }
@@ -167,11 +164,8 @@ class MainController
                         
                     else {
                             
-                        echo    '<div class="card m-3 validation text-white">
-                        <div class="card-body">
-                        <p class="card-text">'.$savedDatas.'</p>
-                        </div>
-                        </div>';
+                        header('Location:http://localhost/boombox_city/index.php?');
+                        exit();
                     }
                 } 
                     
@@ -189,29 +183,24 @@ class MainController
                     $pageObject = new Password($password, $confirmPassword, $dateValidation, $email, $this->pdo);
                     $result = $pageObject->verifyToken();
                     $errors = $pageObject->getErrors($result);
-                    $savedDatas = $pageObject->setFormDatas($errors);
+                    $displays = $pageObject->setFormDatas($errors);
 
-                    if (is_array($savedDatas)) {
+                    if (!empty($displays)) {
                     
-                        foreach ($savedDatas as $savedData) {
+                        foreach ($displays as $display) {
                             
                             echo '<div class="card m-3 errors text-white">
                             <div class="card-body">
-                            <p class="card-text">'.$savedData.'</p>
+                            <p class="card-text">'.$display.'</p>
                             </div>
                             </div>';
                         }
                     }
                             
                     else {
-                        
-                        $display = '<div class="card m-3 validation text-white">
-                        <div class="card-body">
-                        <p class="card-text">'.$savedDatas.'</p>
-                        </div>
-                        </div>';
 
                         header('Location:http://localhost/boombox_city/resident/index.php?page=resident-home');
+                        exit();
                     }
                 }
 

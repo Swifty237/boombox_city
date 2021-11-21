@@ -12,7 +12,7 @@
         <header class="row justify-content-center navigation">
             <nav class="navbar navbar-expand-lg navbar-dark col-8 col-lg-10 d-flex">
                 <div class="row justify-content-center">
-                    <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=home">
+                    <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=resident-home">
                         <img class="logo" src="../resources/pictures/logo/boombox_logo.png" alt="logo">
                     </a>
                     
@@ -58,7 +58,7 @@
             <div class="col-3 col-lg-2 card profil d-flex align-self-center">
                 <div class="card-body">
                     <h5 class="card-title"><?= $_SESSION['resident']->name ?></h5>
-                    <p><a href="http://localhost/boombox_city/index?page=logout">Se déconnecter</a></p>
+                    <p><a href="../index.php?page=logout">Se déconnecter</a></p>
                 </div>
             </div>
         </header>

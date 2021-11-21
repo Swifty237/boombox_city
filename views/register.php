@@ -50,7 +50,8 @@
                     <input type="email" name="confirm-email" id="confirm-email" class="form-control" required></input>
                 </div>
 
-                <div class="d-flex justify-content-center my-4">
+                <div class="d-flex justify-content-around m-4">
+                    <button class="btn btn-box" type="button"><a class="text-decoration-none text-white" href="index.php?">Annuler</a></button>
                     <button class="btn btn-box text-white" type="submit" name="submit">Enregistrer</button>
                 </div>
             </form>

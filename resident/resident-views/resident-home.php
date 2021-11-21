@@ -1,5 +1,32 @@
 <?php
 ob_start();
+session_start();
+
+if (!isset($_SESSION['loggin'])) {
+
+    $_SESSION['loggin'] = "connecté";
+}
+
+if (!isset($_SESSION['resident'])) {
+
+    $_SESSION['flash'] = ['danger' => "Vous devez être connecté pour accéder à cette page"];
+
+    header('Location:http://localhost/boombox_city/index.php?page=login');
+
+    exit();
+}
+
+if (isset($_SESSION['flash']['success'])) {
+
+    echo    '<div class="card m-3 validation text-white">
+                <div class="card-body">
+                    <p class="card-text">'.$_SESSION['flash']['success'].'</p>
+                </div>
+            </div>';
+            
+    unset($_SESSION['flash']['success']);
+}
+
 ?>
         <div class="row block-container justify-content-center">
             <div class="col-2 mt-4 left-side d-none d-lg-block">

@@ -2,8 +2,6 @@
 ob_start();
 ?>
 
-<h1 class="bg-light text-center">Erreur</h1>
-
 <div class="row block-container justify-content-center">
             <div class="col-2 mt-4 left-side d-none d-lg-block">
                 <div class="row mb-5">

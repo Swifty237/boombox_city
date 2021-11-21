@@ -29,18 +29,18 @@ class Password
         $stmt->execute($datas);
         $tokenId = $stmt->fetchObject();
 
-        session_start();
-
         if ($tokenId->token == $token) {
             
             $result = TRUE;
         }
-
+        
         else {
-
-            $_SESSION['flash'] = "Ce token n'est plus valide";
+            
+            session_start();
+            $_SESSION['flash'] = ['danger' => "Ce token n'est plus valide"];
 
             header('Location:http://localhost/boombox_city/index.php?page=login');
+            exit();
         }
 
         return $result;
@@ -56,8 +56,8 @@ class Password
 
         if ($result == FALSE) {
 
-            $errors['token'] = $_SESSION['flash'];
-            unset($_SESSION['flash']);
+            $errors['token'] = $_SESSION['flash']['danger'];
+            unset($_SESSION['flash']['danger']);
         }
 
         if (empty($this->email) || empty($this->password) || empty($this->confirmPassword)) {
@@ -88,6 +88,8 @@ class Password
     {
         if (empty($errors))  {
 
+            $displays = NULL;
+
             $datas = [
                 'password'  =>  password_hash($this->password, PASSWORD_BCRYPT),
                 'date'      =>  $this->dateValidation
@@ -102,15 +104,16 @@ class Password
             $sql->execute(['id' => $_GET['id']]);
             $residentObject = $sql->fetchObject();
             
+            session_start();
             $_SESSION['resident'] = $residentObject;
-            $savedDatas = "Vous êtes connecté";
+            $_SESSION['flash'] = ["success" => "Vous êtes connecté"];
         }
 
         else {
             
-            $savedDatas = $errors;
+            $displays = $errors;
         }
 
-        return $savedDatas;
+        return $displays;
     }
 }

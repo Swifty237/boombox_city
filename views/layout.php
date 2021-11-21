@@ -9,8 +9,8 @@
         <title> Boombox City | <?php echo $title; ?> </title>
     </head>
     <body>
-        <header class="row justify-content-around navigation align-items-center">
-            <nav class="navbar navbar-expand-lg navbar-dark col-8 col-lg-10 d-flex">
+        <header class="row navigation justify-content-between">
+            <nav class="navbar navbar-expand-lg navbar-dark col-9 d-flex">
                 <div class="row justify-content-center">
                     <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=home">
                         <img class="logo" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
@@ -33,31 +33,33 @@
 
                     <div class="col-lg-3 d-none d-lg-flex flex-column justify-content-center">
                         <form class="d-flex">
-                            <input class="form-control" type="search" aria-label="Search" placeholder="Search">
-                            <button class="btn btn-success" type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <button class="btn" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                 </svg>
                             </button>
+                            <input class="form-control" type="search" aria-label="Search" placeholder="Search">
                         </form>
                     </div>
                 </div>
 
                 <div class="col-12 d-lg-none d-flex flex-column">
                     <form class="d-flex">
-                        <input class="form-control" type="search" aria-label="Search" placeholder="Search">
-                        <button class="btn btn-success" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <button class="btn validation" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
                         </button>
+                        <input class="form-control" type="search" aria-label="Search" placeholder="Search">
                     </form>
                 </div>
-            </nav> 
-            
-            <div class="col-3 col-lg-2 card profil d-flex justify-content-center align-items-center">
-                <p class="card-title"><a href="index.php?page=register">Devenir habitant</a></p>
+            </nav>
+
+            <div class="col col-lg-2 d-flex flex-column">
+                <button class="btn city-button mb-2 col-10"><a href="index.php?page=login" class="text-decoration-none size text-white">Se connecter</a></button>
+                <button class="btn city-button col-10"><a href="index.php?page=register" class="text-decoration-none size text-white">Devenir habitant</a></button>
             </div>
+            
         </header>
 
         <?php echo $content; ?>
