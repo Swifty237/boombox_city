@@ -19,14 +19,14 @@ ob_start();
                     </div>
                 </div>
 
-                <div class="row mb-5">
+                <!-- <div class="row mb-5">
                     <div class="card border-0">
                         <div class="card-body">
                             <h5 class="card-title">Widget</h5>
                             <p class="card-text">Some quick example text to build</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="col col-lg-7 mt-5">
@@ -47,7 +47,7 @@ ob_start();
                 </div>
             </div>
 
-            <div class="col-2 mt-4 right-side d-none d-lg-block">
+            <!-- <div class="col-2 mt-4 right-side d-none d-lg-block">
                 <div class="row mb-5">
                     <div class="card boder-0">
                         <div class="card-body">
@@ -61,7 +61,7 @@ ob_start();
                     <div class="card border-0">
                         <img class="card-img-top" src="./resources/pictures/4304708.png" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
 

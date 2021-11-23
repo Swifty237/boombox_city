@@ -10,7 +10,7 @@
     </head>
     <body>
         <header class="row navigation justify-content-between">
-            <nav class="navbar navbar-expand-lg navbar-dark col-9 d-flex">
+            <nav class="navbar navbar-expand-lg navbar-dark col-10 d-flex">
                 <div class="row justify-content-center">
                     <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=home">
                         <img class="logo" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
@@ -45,7 +45,7 @@
 
                 <div class="col-12 d-lg-none d-flex flex-column">
                     <form class="d-flex">
-                        <button class="btn validation" type="submit">
+                        <button class="btn" type="submit">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
@@ -64,7 +64,7 @@
 
         <?php echo $content; ?>
         
-        <footer class="row footbar">
+        <footer class="row footbar" id="footbar">
             <div class="mx-4">
                 <h4 class="text-center text-white my-4">Boombox City</h4>
                 <hr class="text-white">
@@ -91,5 +91,6 @@
                   integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" 
                   crossorigin="anonymous">
         </script>
+        <script src="./js/script.js"></script>
     </body>
 </html>
