@@ -27,11 +27,11 @@ else {
                             <li class="list-group-item size">Actu Photos</li>
                             <li class="list-group-item size">Actu Vidéos</li>
                         </ul>
-                    </div>
                 </div>
+            </div>
 
                 <div class="row mb-2">
-                    <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#infos" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#infos" aria-expanded="false" aria-controls="infos">
                             City infos
                     </button>
                     <div class="collapse collapse-horizontal" id="infos">
@@ -59,19 +59,23 @@ else {
 
             <div class="col col-lg-7 mt-5">
                 <div class="row card m-5 bg-middle">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Some quick example text to build</p>
+                    <div class="card-body border border-1 border-success m-3 col-11 bg-light">
+                        <p>Test du tchat</p>
+                        <p>Test du tchat</p>
+                        <p>Test du tchat</p>
                     </div>
-                </div>
+                    
+                    <form class="form">
+                        <div class="mb-3">
+                            <label for="tchat" class="form-label">Discussion avec : Pseudo</label>
+                            <textarea class="form-control" id="tchat" rows="3"></textarea>
+                        </div>
 
-                <div class="row card m-5 bg-middle">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Some quick example text to build</p>
-                    </div>
+                        <div class="mb-3 d-flex justify-content-end">
+                            <button type="submit" class="btn city-button text-white">Envoyer</button>
+                        </div>      
+                    </form>
+
                 </div>
             </div>
 

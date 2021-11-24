@@ -11,7 +11,7 @@ if (isset($_SESSION['resident'])) {
 
 if (isset($_SESSION['flash']['visiteur'])) {
     
-    echo    '<div class="card m-3 validation text-white">
+    echo    '<div class="row card m-3 validation text-white">
                 <div class="card-body">
                     <p class="card-text">'.$_SESSION['flash']['visiteur'].'</p>
                 </div>

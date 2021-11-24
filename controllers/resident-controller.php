@@ -71,7 +71,8 @@ class ResidentController
                 
             case 'resident-contact': 
                     
-                $pageObject = new ResidentContact(); 
+                $pageObject = new ResidentContact();
+                $residents = $pageObject->getResidentList(); 
 
             break;
             
@@ -83,6 +84,31 @@ class ResidentController
             case 'resident-home': 
                 
                 $pageObject = new ResidentHome();
+
+            break;
+
+            case 'resident-profil': 
+                
+                $pageObject = new ResidentProfil();
+                $profil = $pageObject->getProfil();
+
+            break;
+
+            case 'resident-pvideo': 
+                
+                $pageObject = new ResidentPvideo();
+
+            break;
+
+            case 'resident-ppricture': 
+                
+                $pageObject = new ResidentPpicture();
+
+            break;
+
+            case 'resident-tchat': 
+                
+                $pageObject = new ResidentTchat();
 
             break;
         }

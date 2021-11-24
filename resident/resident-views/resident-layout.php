@@ -22,12 +22,12 @@
 
                     <div class="collapse navbar-collapse col-5" id="listNav">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'home')? 'page' : ''; ?>" href="index.php?page=resident-home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'videos')? 'page' : ''; ?>" href="index.php?page=resident-videos">Vidéos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'pictures')? 'page' : ''; ?>" href="index.php?page=resident-pictures">Photos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'lives')? 'page' : ''; ?>" href="index.php?page=resident-lives">Lives</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'contact')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'contact')? 'page' : ''; ?>" href="index.php?page=resident-contact">Contact</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'help')? 'page' : ''; ?>" href="index.php?page=resident-help">Aide</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-home')? 'page' : ''; ?>" href="index.php?page=resident-home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-videos')? 'page' : ''; ?>" href="index.php?page=resident-videos">Vidéos</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-pictures')? 'page' : ''; ?>" href="index.php?page=resident-pictures">Photos</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-lives')? 'page' : ''; ?>" href="index.php?page=resident-lives">Lives</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-tchat')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-contact')? 'page' : ''; ?>" href="index.php?page=resident-contact">Discuter</a></li>
+                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-help')? 'page' : ''; ?>" href="index.php?page=resident-help">Aide</a></li>
                         </ul>
                     </div>
 
@@ -60,9 +60,7 @@
             </div>
         </header>
 
-        <!-- <h5 class="card-title text-white row"><?= $_SESSION['resident']->name ?></h5> -->
-
-        <?php echo $content;?>
+        <?= $content ?>
         
         <footer class="row footbar" id="footbar">
             <div class="mx-4">
@@ -91,6 +89,6 @@
                   integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" 
                   crossorigin="anonymous">
         </script>
+        <script src="../js/script.js"></script>
     </body>
 </html>
-

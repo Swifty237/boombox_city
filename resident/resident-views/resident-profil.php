@@ -15,8 +15,8 @@ else {
 ?>
 
 <div class="row block-container justify-content-center">
-
-            <div class="col-2 mt-4 left-side d-none d-lg-block">
+    
+<div class="col-2 mt-4 left-side d-none d-lg-block">
                 <div class="row mb-2">
                     <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="false" aria-controls="collapseWidthExample">
                         Actualités
@@ -57,25 +57,26 @@ else {
                 </div>
             </div>
 
-            <div class="col col-lg-7 mt-5">
-                <div class="row card m-5 bg-middle">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Some quick example text to build</p>
-                    </div>
-                </div>
+    <div class="col col-lg-7 mt-5">
 
-                <div class="row card m-5 bg-middle">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Some quick example text to build</p>
-                    </div>
-                </div>
+        <div class="row card m-5 bg-middle">
+            <img src="../resources/pictures/profil/<?= $profil->profil_picture ?>" alt="" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title"><?= $profil->firstname ?></h5>
+                <p class="card-text"><?= $profil->name ?></p>
+                <p class="card-text"><?= ($profil->status == 0)? 'Habitant' : 'Administrateur' ?></p>
+                <p class="card-text"><?= $profil->birthdate ?></p>
+                <p class="card-text"><?= $profil->date_inscription ?></p>
+                <p class="card-text"><?= $profil->presentation ?></p>
             </div>
+            <button class="btn city-button col-5 mb-3 d-flex align-self-center justify-content-center">
+                <a class="text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-tchat&id=<?= $profil->id ?>">Discuter</a>
+            </button>
+        </div>
 
-            <div class="col-2 mt-4 right-side d-none d-lg-block">
+    </div>
+
+    <div class="col-2 mt-4 right-side d-none d-lg-block">
                 <div class="row mb-2">
                     <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target= "#profil" aria-controls="profil" aria-expanded="false" aria-label="">
                         <img src="../resources/pictures/profil/profil5.jpg" alt="" class="card-img-top">
@@ -116,12 +117,12 @@ else {
                     </div>
                 </div>
             </div>
-            
-        </div>
+
+</div>
 
 <?php
 
-$title = 'Aide';
+$title = 'Photos';
 $content = ob_get_clean();
 
 require_once 'resident-layout.php';

@@ -15,8 +15,8 @@ else {
 ?>
 
 <div class="row block-container justify-content-center">
-
-            <div class="col-2 mt-4 left-side d-none d-lg-block">
+    
+<div class="col-2 mt-4 left-side d-none d-lg-block">
                 <div class="row mb-2">
                     <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="false" aria-controls="collapseWidthExample">
                         Actualités
@@ -121,7 +121,7 @@ else {
 
 <?php
 
-$title = 'Aide';
+$title = 'Photos';
 $content = ob_get_clean();
 
 require_once 'resident-layout.php';
