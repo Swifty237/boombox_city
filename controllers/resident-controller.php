@@ -106,9 +106,25 @@ class ResidentController
 
             break;
 
-            case 'resident-tchat': 
+            case 'resident-tchat':
                 
-                $pageObject = new ResidentTchat();
+                if (isset($_POST['submit']) && (!empty($_POST['message'])) && (isset($_GET['id'])) && (!empty($_GET['id']))) {
+
+                    session_start();
+
+                    $destinationId = $_GET['id'];
+                    $expeditorId = $_SESSION['resident']->id;
+                    $message = htmlspecialchars(trim($_POST['message']));
+                    
+                    $pageObject = new ResidentTchat($expeditorId, $destinationId, $message, $this->pdo);
+
+                    $exist = $pageObject->getReceiver();
+
+                    $pageObject->addMessage($exist);
+
+                    $messages = $pageObject->sendMessage(); 
+                    $_SESSION['messages'] = $messages;
+                }
 
             break;
         }

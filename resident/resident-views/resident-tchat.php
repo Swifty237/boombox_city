@@ -1,6 +1,11 @@
 <?php
 ob_start();
-session_start();
+
+if (session_status() == PHP_SESSION_NONE) {
+
+    session_start();
+
+}
 
 if (!isset($_SESSION['resident'])) {
 
@@ -59,20 +64,40 @@ else {
 
             <div class="col col-lg-7 mt-5">
                 <div class="row card m-5 bg-middle">
-                    <div class="card-body border border-1 border-success m-3 col-11 bg-light">
-                        <p>Test du tchat</p>
-                        <p>Test du tchat</p>
-                        <p>Test du tchat</p>
+                    <div class="card-body border border-1 border-success rounded-2 m-3 col-11 bg-light">
+
+                    <?php
+                        $messages = $_SESSION['messages'];
+
+                        foreach ($messages as $message) :
+                            
+                            if ($_SESSION['resident']->id == $message->exp_id && $_GET['id'] == $message->dest_id) {
+                            
+                                echo '<p class ="bg-success">'.$message->message.'</p>';
+                                echo '<p class ="bg-success">'.$message->date_message.'</p>';
+                                echo '<br>';
+                            }
+
+                            if ($_SESSION['resident']->id == $message->dest_id && $_GET['id'] == $message->exp_id) {
+
+                                echo '<p class ="bg-warning">'.$message->message.'</p>';
+                                echo '<p class ="bg-warning">'.$message->date_message.'</p>';
+                                echo '<br>';
+                            }
+
+                        endforeach;
+                    ?>
+
                     </div>
                     
-                    <form class="form">
+                    <form class="form" method="POST">
                         <div class="mb-3">
-                            <label for="tchat" class="form-label">Discussion avec : Pseudo</label>
-                            <textarea class="form-control" id="tchat" rows="3"></textarea>
+                            <label for="message" class="form-label">Discussion avec : Pseudo</label>
+                            <textarea class="form-control" id="message" rows="3" name="message"></textarea>
                         </div>
 
                         <div class="mb-3 d-flex justify-content-end">
-                            <button type="submit" class="btn city-button text-white">Envoyer</button>
+                            <button type="submit" class="btn city-button text-white" name="submit">Envoyer</button>
                         </div>      
                     </form>
 

@@ -63,7 +63,7 @@ else {
 
         if ($resident->id != $_SESSION['resident']->id) {
 ?>
-                <div class="row m-5 bg-middle">
+                <div class="row m-5 bg-middle rounded">
                     <div class="col-4 card border-0">
                         <img src="../resources/pictures/profil/<?= $resident->profil_picture ?>" class="card-img-top">
                     </div>

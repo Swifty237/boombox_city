@@ -68,12 +68,12 @@ class MainController
             
             case 'videos': 
                 $pageObject = new Videos();
-                $videos = $pageObject->getVideosList(); 
+                $videos = $pageObject->getVideosList();
                 break;
                 
             case 'pictures':    
                 $pageObject = new Pictures();
-                $pictures = $pageObject->getPicsList(); 
+                $pictures = $pageObject->getPicsList();
 
             break;
                 
