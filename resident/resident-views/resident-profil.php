@@ -1,6 +1,10 @@
 <?php
 ob_start();
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+
+    session_start();
+
+}
 
 if (!isset($_SESSION['resident'])) {
 
@@ -12,6 +16,7 @@ if (!isset($_SESSION['resident'])) {
 }
 
 else {
+
 ?>
 
 <div class="row block-container justify-content-center">
@@ -70,7 +75,11 @@ else {
                 <p class="card-text"><?= $profil->presentation ?></p>
             </div>
             <button class="btn city-button col-5 mb-3 d-flex align-self-center justify-content-center">
-                <a class="text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-tchat&id=<?= $profil->id ?>">Discuter</a>
+                <a  class="text-white text-decoration-none" 
+                    href= <?= ($profil->id == $_SESSION['resident']->id) ? "http://localhost/boombox_city/resident/index.php?page=resident-modif" : "http://localhost/boombox_city/resident/index.php?page=resident-tchat&id=".$profil->id ?> >
+                    
+                        <?= ($profil->id == $_SESSION['resident']->id) ? "Modifier" : "Discuter" ?>
+                </a>
             </button>
         </div>
 
@@ -86,7 +95,7 @@ else {
                     <div class="collapse" id="profil">
                         <div class="d-flex flex-column">
                             <button class="btn city-button mb-2">
-                                <a class="size text-white text-decoration-none" href="#">Profil</a>
+                                <a class="size text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Profil</a>
                             </button>
 
                             <button class="btn city-button" type="button" data-bs-toggle="collapse" data-bs-target="#poster" aria-expanded="false" aria-controls="poster">

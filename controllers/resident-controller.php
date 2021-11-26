@@ -72,7 +72,10 @@ class ResidentController
             case 'resident-contact': 
                     
                 $pageObject = new ResidentContact();
-                $residents = $pageObject->getResidentList(); 
+                $residents = $pageObject->getResidentList();
+                
+                session_start();
+                $_SESSION['contact'] = $residents;
 
             break;
             
@@ -92,6 +95,9 @@ class ResidentController
                 $pageObject = new ResidentProfil();
                 $profil = $pageObject->getProfil();
 
+                session_start();
+                $_SESSION['profil'] = $profil;
+
             break;
 
             case 'resident-pvideo': 
@@ -108,25 +114,36 @@ class ResidentController
 
             case 'resident-tchat':
                 
+                session_start();
+
+                $destinationId = $_GET['id'];
+                $expeditorId = $_SESSION['resident']->id;
+                $message = NULL;
+                
+                $pageObject = new ResidentTchat($expeditorId, $destinationId, $message, $this->pdo);
+                $messages = $pageObject->sendMessage();
+                $_SESSION['msg'.$destinationId] = $messages;
+
+
                 if (isset($_POST['submit']) && (!empty($_POST['message'])) && (isset($_GET['id'])) && (!empty($_GET['id']))) {
 
-                    session_start();
-
-                    $destinationId = $_GET['id'];
-                    $expeditorId = $_SESSION['resident']->id;
                     $message = htmlspecialchars(trim($_POST['message']));
                     
                     $pageObject = new ResidentTchat($expeditorId, $destinationId, $message, $this->pdo);
-
                     $exist = $pageObject->getReceiver();
 
                     $pageObject->addMessage($exist);
 
-                    $messages = $pageObject->sendMessage(); 
-                    $_SESSION['messages'] = $messages;
+                    $messages = $pageObject->sendMessage();
+                    
+                    $_SESSION['msg'.$destinationId] = $messages;
                 }
 
             break;
+
+            case 'resident-modif':
+                
+                $pageObject = new ResidentModif();
         }
 
         require_once '../resident/resident-views/'.$page.'.php';                  

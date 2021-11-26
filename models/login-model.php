@@ -24,7 +24,7 @@ class Login
         $stmt = $this->pdo->prepare($req);
         $stmt->execute($datas);
         $residentObjectDatas = $stmt->fetchObject();
-        //return $residentObjectDatas;   => problème avec le navigateur google quand je garde le return mais pas de souci sur Mozilla
+        //return $residentObjectDatas;   // => problème avec le navigateur google quand je garde le return mais pas de souci sur Mozilla
 
         if (empty($this->email) || empty($this->password)) {
 

@@ -15,6 +15,7 @@ class ResidentContact
         while ($resident = $stmt->fetchObject()) {
             
             $residents[] = $resident;
+
         }
         return $residents;
     }

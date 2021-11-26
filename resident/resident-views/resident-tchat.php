@@ -17,6 +17,16 @@ if (!isset($_SESSION['resident'])) {
 }
 
 else {
+
+    $residents = $_SESSION['contact'];
+
+    foreach ($residents as $resident) :
+
+        if ($resident->id == $_GET['id']) {
+
+            $_SESSION['profil'] = $resident;
+        }
+    endforeach;
 ?>
 
 <div class="row block-container justify-content-center">
@@ -67,32 +77,55 @@ else {
                     <div class="card-body border border-1 border-success rounded-2 m-3 col-11 bg-light">
 
                     <?php
-                        $messages = $_SESSION['messages'];
 
-                        foreach ($messages as $message) :
+                        $id = $_GET['id'];
+
+                        if (!isset($_SESSION['msg'.$id])) {
+                           
+                            header('Location:http://localhost/boombox_city/resident/index.php?page=resident-tchat&id='.$id);
+                            exit();
+                        }
+
+                        else {
+
+                            $messages = array_reverse($_SESSION['msg'.$id]);
+
+                            foreach ($messages as $message) :
                             
-                            if ($_SESSION['resident']->id == $message->exp_id && $_GET['id'] == $message->dest_id) {
-                            
-                                echo '<p class ="bg-success">'.$message->message.'</p>';
-                                echo '<p class ="bg-success">'.$message->date_message.'</p>';
-                                echo '<br>';
-                            }
-
-                            if ($_SESSION['resident']->id == $message->dest_id && $_GET['id'] == $message->exp_id) {
-
-                                echo '<p class ="bg-warning">'.$message->message.'</p>';
-                                echo '<p class ="bg-warning">'.$message->date_message.'</p>';
-                                echo '<br>';
-                            }
-
-                        endforeach;
+                                if ($_SESSION['resident']->id == $message->exp_id && $_GET['id'] == $message->dest_id) {
+                                
+                                    ?>
+                                        <div class="row mt-2 justify-content-end">
+                                            <div class="card col-6 bg-info">
+                                                <p class="card-text"><?= $message->message ?></p>
+                                                <p class="card-text"><?= $message->date_message ?></p>
+                                            </div>
+                                        </div>
+                                    <?php
+                                }
+    
+                                if ($_SESSION['resident']->id == $message->dest_id && $_GET['id'] == $message->exp_id) {
+    
+                                    ?>
+                                        <div class="row mt-2">
+                                            <div class="card col-6 bg-light">
+                                                <p class="card-text"><?= $message->message ?></p>
+                                                <p class="card-text"><?= $message->date_message ?></p>
+                                            </div>
+                                        </div>
+                                    <?php
+                                }
+    
+                            endforeach;
+                        }
+                        
                     ?>
 
                     </div>
                     
                     <form class="form" method="POST">
                         <div class="mb-3">
-                            <label for="message" class="form-label">Discussion avec : Pseudo</label>
+                            <label for="message" class="form-label">Discussion avec : <?= $_SESSION['profil']->firstname ?></label>
                             <textarea class="form-control" id="message" rows="3" name="message"></textarea>
                         </div>
 
@@ -114,7 +147,7 @@ else {
                     <div class="collapse" id="profil">
                         <div class="d-flex flex-column">
                             <button class="btn city-button mb-2">
-                                <a class="size text-white text-decoration-none" href="#">Profil</a>
+                                <a class="size text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Profil</a>
                             </button>
 
                             <button class="btn city-button" type="button" data-bs-toggle="collapse" data-bs-target="#poster" aria-expanded="false" aria-controls="poster">

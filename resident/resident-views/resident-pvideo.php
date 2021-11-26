@@ -85,7 +85,7 @@ else {
                     <div class="collapse" id="profil">
                         <div class="d-flex flex-column">
                             <button class="btn city-button mb-2">
-                                <a class="size text-white text-decoration-none" href="#">Profil</a>
+                                <a class="size text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Profil</a>
                             </button>
 
                             <button class="btn city-button" type="button" data-bs-toggle="collapse" data-bs-target="#poster" aria-expanded="false" aria-controls="poster">

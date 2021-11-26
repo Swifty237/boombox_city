@@ -1,6 +1,11 @@
 <?php
 ob_start();
-session_start();
+
+if (session_status() == PHP_SESSION_NONE) {
+
+    session_start();
+
+}
 
 if (!isset($_SESSION['resident'])) {
 
@@ -60,16 +65,18 @@ else {
             <div class="col col-lg-7 mt-5">
 <?php
     foreach ($residents as $resident):
-
+        
         if ($resident->id != $_SESSION['resident']->id) {
-?>
+
+            ?>
                 <div class="row m-5 bg-middle rounded">
-                    <div class="col-4 card border-0">
+                    <div class="col-4 card border-0 p-2">
                         <img src="../resources/pictures/profil/<?= $resident->profil_picture ?>" class="card-img-top">
                     </div>
-                    <div class="col-8 card border-0 d-flex flex-column justify-content-center">
-                        <h5 class="card-title"><a href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $resident->id ?>"><?= $resident->firstname ?></a></h5>
-                        <p class="card-text"><?= ($resident->status == 0)? 'Habitant' : 'Administrateur' ?></p>
+                    <div class="col-8 card border-0 d-flex flex-column justify-content-center p-2">
+                        <h5 class="card-title"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $resident->id ?>">Profil de <?= $resident->firstname ?></a></h5>
+                        <span class="card-text"><?= ($resident->status == 0)? 'Habitant' : 'Administrateur' ?></span>
+                        <span class="card-text"><a href="http://localhost/boombox_city/resident/index.php?page=resident-tchat&id=<?= $resident->id ?>">Parler avec <?= $resident->firstname ?></a></span>
                     </div>
                 </div>
 <?php
@@ -88,7 +95,7 @@ else {
                     <div class="collapse" id="profil">
                         <div class="d-flex flex-column">
                             <button class="btn city-button mb-2">
-                                <a class="size text-white text-decoration-none" href="#">Profil</a>
+                                <a class="size text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Profil</a>
                             </button>
 
                             <button class="btn city-button" type="button" data-bs-toggle="collapse" data-bs-target="#poster" aria-expanded="false" aria-controls="poster">
