@@ -8,7 +8,7 @@ class ResidentPictures
 
     public function getPicsList()
     {
-        $stmt = $this->pdo->query('SELECT * FROM pictures');
+        $stmt = $this->pdo->query("SELECT * FROM pictures");
 
         $pictures = [];
 

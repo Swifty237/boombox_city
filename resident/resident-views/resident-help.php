@@ -95,8 +95,8 @@ else {
                             <div class="collapse collapse-horizontal" id="poster">
                                 <ul class="list-group">
                                     <li class="list-group-item size"><a class="text-decoration-none" href="#">Lives</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Vidéos</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Photos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-pvideo">Vidéos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
                                 </ul>
                             </div>
 

@@ -29,25 +29,26 @@ ob_start();
         </div> -->
     </div>
 
-    <div class="col col-lg-7 mt-5">
-
 <?php
     foreach ($pictures as $picture): 
 ?>
 
-        <div class="row card m-5 bg-middle">
-            <img src="./resources/pictures/<?= $picture->picture_name ?>" alt="" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title"><?= $picture->title ?></h5>
-                <p class="card-text"><?= $picture->description ?></p>
-            </div>
-        </div>
+<div class="card col-10 col-lg-7 mt-5">
+
+<div class="card-body bg-middle d-flex justify-content-between">
+    <img src="./resources/pictures/<?= $picture->picture_name ?>" alt="" class="col-7">
+    <div class="col-4">
+        <h5 class="card-title"><?= $picture->title ?></h5>
+        <p class="card-text"><?= substr(nl2br($picture->description), 0, 50) ?></p>
+        <a href="#">Voir l'article complet</a>
+    </div>
+</div>
+
+</div>
 
 <?php
     endforeach; 
 ?>
-
-    </div>
 
     <!-- <div class="col-2 mt-4 right-side d-none d-lg-block">
         <div class="row mb-5">

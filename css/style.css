@@ -1,15 +1,13 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-image: url("../resources/pictures/telechargement.jpg");
-    background-size: cover;
+    background: linear-gradient(.25turn,rgba(98, 130, 138, 0.9), rgb(255, 255, 255), rgba(98, 130, 138, 0.9));
     background-attachment: fixed;
     overflow-x: hidden;
 }
 
 .navigation {
-    /* background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(231, 81, 12, .8), rgb(0, 0, 0)); */
-    background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0)); 
+    background: linear-gradient(.25turn,rgb(255, 255, 255), rgba(98, 130, 138, 0.9), rgb(255, 255, 255));
     z-index: 5555;
     width: auto;
     position: sticky;
@@ -39,8 +37,7 @@ body {
 }
 
 .footbar {
-    /* background: linear-gradient(.25turn,rgba(0, 0, 0), rgba(231, 81, 12, .8), rgba(0, 0, 0)); */
-    background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0)); 
+    background: linear-gradient(.25turn,rgb(255, 255, 255), rgba(98, 130, 138, 0.9), rgb(255, 255, 255));
     z-index: 4444;
     width: auto;
     position: relative;
@@ -49,7 +46,7 @@ body {
 }
 
 .footbar-visible {
-    background: linear-gradient(.25turn,rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0)); 
+    background: linear-gradient(.25turn,rgb(255, 255, 255), rgba(98, 130, 138, 0.9), rgb(255, 255, 255));
     z-index: 4444;
     width: auto;
     position: relative;
@@ -63,7 +60,11 @@ body {
  }
 
  .validation {
-    background: linear-gradient(.25turn,rgb(0, 0, 0, .8), rgb(66, 153, 63), rgb(0, 0, 0, .8));
+    background: linear-gradient(rgb(0, 0, 0, .8), rgb(111, 175, 109), rgb(0, 0, 0, .8));
+}
+
+.errors {
+    background: linear-gradient(rgb(0, 0, 0, .5), rgb(255, 0, 0), rgb(0, 0, 0, .5));
 }
 
 .size {
@@ -71,5 +72,5 @@ body {
 }
 
 .city-button {
-    background: linear-gradient(rgba(0, 0, 0), rgb(78, 146, 118), rgba(0, 0, 0));
+    background: linear-gradient(rgb(3, 100, 87), rgba(0, 0, 0, 0.8), rgb(3, 100, 87));
 }

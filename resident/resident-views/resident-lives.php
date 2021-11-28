@@ -57,17 +57,17 @@ else {
                 </div>
             </div>
 
-            <div class="col col-lg-7 mt-5">
-                <div class="row card m-5 bg-middle">
-                   
+            <div class="col-10 col-lg-7 mt-5">
+                <div class="row card bg-middle">
                     <div class="card-body">
                         <h5 class="card-title">Titre</h5>
                         <p class="card-text">Some quick example text to build</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="row card m-5 bg-middle">
-
+            <div class="col-10 col-lg-7 mt-5">
+                <div class="row card bg-middle">
                     <div class="card-body">
                         <h5 class="card-title">Titre</h5>
                         <p class="card-text">Some quick example text to build</p>
@@ -95,8 +95,8 @@ else {
                             <div class="collapse collapse-horizontal" id="poster">
                                 <ul class="list-group">
                                     <li class="list-group-item size"><a class="text-decoration-none" href="#">Lives</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Vidéos</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Photos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-video">Vidéos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
                                 </ul>
                             </div>
 

@@ -39,7 +39,7 @@ if (isset($_SESSION['flash']['success'])) {
     <body class="d-flex flex-column justify-content-around">
         
         <div class="card welcome-box bg-transparent">
-            <h1 class="text-center text-white">Bienvenue à Boombox City</h1>
+            <h1 class="text-center">Bienvenue à Boombox City</h1>
         </div>
 
         <div class="d-flex justify-content-center">

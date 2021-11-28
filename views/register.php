@@ -10,27 +10,27 @@
     </head>
     <body class="d-flex flex-column align-items-center">
 
-        <h1 class="text-white">Inscription</h1>
+        <h1 class="my-3">Inscription</h1>
 
-        <div class="card col-8 inscription-box">
+        <div class="card col-8 inscription-box pb-3">
             <form class="form" method="POST">
                 <div class="m-3">
-                    <label for="name" class="form-label text-white">Nom</label>
+                    <label for="name" class="form-label">Nom</label>
                     <input type="text" name="name" id="name" class="form-control" required>
                 </div>
 
                 <div class="m-3">
-                    <label for="firstname" class="form-label text-white">Prénom</label>
+                    <label for="firstname" class="form-label">Prénom</label>
                     <input type="text" name="firstname" id="firstname" class="form-control" required>
                 </div>
 
                 <div class="m-3">
-                    <label for="birthdate" class="form-label text-white">Date de naissance</label>
+                    <label for="birthdate" class="form-label">Date de naissance</label>
                     <input type="date" name="birthdate" id="birthdate" class="form-control" min="1900-01-01" required>
                 </div>
 
                 <div class="m-3">
-                    <label for="sex" class="form-label text-white">Sexe</label>
+                    <label for="sex" class="form-label">Sexe</label>
 
                     <select class="form-select" name="sex" id="sex" aria-label="choix du sexe">
                         <option value="">...</option>
@@ -41,18 +41,18 @@
                 </div>
 
                 <div class="m-3">
-                    <label class="mb-3 form-label text-white" for ="email">Email</label>
+                    <label class="mb-3 form-label" for ="email">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required></input>
                 </div>
 
                 <div class="m-3">
-                    <label class="mb-3 form-label text-white" for ="confirm-email">Saisir l'email de nouveau</label>
+                    <label class="mb-3 form-label" for ="confirm-email">Saisir l'email de nouveau</label>
                     <input type="email" name="confirm-email" id="confirm-email" class="form-control" required></input>
                 </div>
 
-                <div class="d-flex justify-content-around m-4">
-                    <button class="btn btn-box" type="button"><a class="text-decoration-none text-white" href="index.php?">Annuler</a></button>
-                    <button class="btn btn-box text-white" type="submit" name="submit">Enregistrer</button>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-box mx-4" type="button"><a class="text-decoration-none text-white" href="index.php?">Annuler</a></button>
+                    <button class="btn btn-box mx-4 text-white" type="submit" name="submit">Enregistrer</button>
                 </div>
             </form>
         </div>

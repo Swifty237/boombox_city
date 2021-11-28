@@ -9,62 +9,66 @@
         <title> Boombox City | <?php echo $title; ?> </title>
     </head>
     <body>
-        <header class="row navigation justify-content-between">
-            <nav class="navbar navbar-expand-lg navbar-dark col-10 d-flex">
-                <div class="row justify-content-center">
-                    <a class="navbar-brand col-12 col-lg-3 mt-3 d-flex justify-content-center" href="index.php?page=home">
+        <header class="row navigation justify-content-around">
+            <nav class="col-10 navbar navbar-expand-lg navbar-dark">
+                <div class="row col-8 col-lg-12 px-3 align-items-center">
+                    
+                    <a class="navbar-brand mt-3 col-7 col-lg-4 d-flex justify-content-center" href="index.php?page=home">
                         <img class="logo" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
                     </a>
                     
-                    <button class="navbar-toggler btn btn-outline-dark my-3 col-3" type="button" data-bs-toggle="collapse" data-bs-target="#listNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler btn city-button my-3 col-3" type="button" data-bs-toggle="collapse" data-bs-target="#listNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <div class="collapse navbar-collapse col-5" id="listNav">
-                        <ul class="navbar-nav">
+                    <div class="col-7 collapse navbar-collapse justify-content-between city-button rounded" id="listNav">
+                        <ul class="navbar-nav col-5">
                             <li class="nav-item"><a class="nav-link <?php echo ($page == 'home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'home')? 'page' : ''; ?>" href="index.php?page=home">Home</a></li>
                             <li class="nav-item"><a class="nav-link <?php echo ($page == 'videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'videos')? 'page' : ''; ?>" href="index.php?page=videos">Vidéos</a></li>
                             <li class="nav-item"><a class="nav-link <?php echo ($page == 'pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'pictures')? 'page' : ''; ?>" href="index.php?page=pictures">Photos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'lives')? 'page' : ''; ?>" href="index.php?page=lives">Lives</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'contact')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'contact')? 'page' : ''; ?>" href="index.php?page=contact">Contact</a></li>
                             <li class="nav-item"><a class="nav-link <?php echo ($page == 'help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'help')? 'page' : ''; ?>" href="index.php?page=help">Aide</a></li>
                         </ul>
+
+                        <div class="col-5 d-none d-lg-flex flex-column justify-content-center city-button">
+                            <form class="d-flex">
+                                <button class="btn" type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                </button>
+                                <input class="form-control" type="search" aria-label="Search" placeholder="Search">
+                            </form>
+                        </div>
                     </div>
 
-                    <div class="col-lg-3 d-none d-lg-flex flex-column justify-content-center">
-                        <form class="d-flex">
-                            <button class="btn" type="submit">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                </svg>
-                            </button>
-                            <input class="form-control" type="search" aria-label="Search" placeholder="Search">
-                        </form>
-                    </div>
                 </div>
 
-                <div class="col-12 d-lg-none d-flex flex-column">
-                    <form class="d-flex">
-                        <button class="btn" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                            </svg>
-                        </button>
-                        <input class="form-control" type="search" aria-label="Search" placeholder="Search">
-                    </form>
-                </div>
+                <div class="d-flex d-lg-none flex-column justify-content-center">
+                    <button class="btn city-button mb-2"><a href="index.php?page=login" class="text-decoration-none size text-white">Se connecter</a></button>
+                    <button class="btn city-button"><a href="index.php?page=register" class="text-decoration-none size text-white">Devenir habitant</a></button>
+                </div> 
             </nav>
 
-            <div class="col col-lg-2 d-flex flex-column">
-                <button class="btn city-button mb-2 col-10"><a href="index.php?page=login" class="text-decoration-none size text-white">Se connecter</a></button>
-                <button class="btn city-button col-10"><a href="index.php?page=register" class="text-decoration-none size text-white">Devenir habitant</a></button>
-            </div>
+            <div class="col-2 d-none d-lg-flex flex-column justify-content-center">
+                <button class="btn city-button mb-2"><a href="index.php?page=login" class="text-decoration-none size text-white">Se connecter</a></button>
+                <button class="btn city-button"><a href="index.php?page=register" class="text-decoration-none size text-white">Devenir habitant</a></button>
+            </div> 
             
+            <div class="col-11 d-lg-none rounded mb-2">
+                <form class="d-flex justify-content-between">
+                    <button class="col-2 btn city-button" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search text-white" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                    <input class="col form-control" type="search" aria-label="Search" placeholder="Search">
+                </form>
+            </div>
         </header>
 
         <?php echo $content; ?>
         
-        <footer class="row footbar" id="footbar">
+        <footer class="row footbar mt-5" id="footbar">
             <div class="mx-4">
                 <h4 class="text-center text-white my-4">Boombox City</h4>
                 <hr class="text-white">

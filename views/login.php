@@ -27,24 +27,24 @@ if (isset($_SESSION['flash']['danger'])) {
 
     <body class="d-flex flex-column mt-5 align-items-center">
         
-        <h3 class="text-center text-white mb-5">Connexion habitant</h3>
+        <h3 class="text-center text-color mb-5">Connexion utilisateur</h3>
 
-        <div class="card col-7 align-self-center connexion-box">
+        <div class="card col-7 align-self-center connexion-box border">
             <form class="form" method="POST">
                 <div class="row justify-content-center">
                     <div class="col-10 mb-3">
-                        <label class="form-label text-white" for="email">Adresse email</label>
+                        <label class="form-label" for="email">Adresse email</label>
                         <input class= "form-control" type="email" id="email" name="email" required>
                     </div>
                     <div class="col-10 mb-3">
-                        <label class="form-label text-white" for="password">Mot de passe</label>
+                        <label class="form-label" for="password">Mot de passe</label>
                         <input class= "form-control" type="password" id="password" name="password" required>
                     </div>
 
                     <button type="submit" class="col-4 btn btn-box mb-2 text-white" name="submit">Entrer</button>
                     
                     <p class="my-3 d-flex justify-content-center">
-                        <a class=text-white href="index.php?page=register">Devenir habitant</a>
+                        <a href="index.php?page=register">S'inscrire</a>
                     </p>
                 </div>
             </form>

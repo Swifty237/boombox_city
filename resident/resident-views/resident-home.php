@@ -73,22 +73,26 @@ if (isset($_SESSION['flash']['success'])) {
             </div>
 
 
-            <div class="col col-lg-7 mt-5">
-                <div class="row card m-5 bg-middle">
-                    <video controls>
+            <div class="col-10 col-lg-7 mt-5">
+                <div class="card-body bg-middle d-flex justify-content-between">
+                    <video class="col-7" controls>
                         <source src="../resources/videos/avatar.mp4" type="video/mp4">
                     </video>
-                    <div class="card-body">
+                    <div class="col-4">
                         <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Some quick example text to build</p>
+                        <p class="card-text">Dernière video poster</p>
+                        <a href="http://localhost/boombox_city/resident/index.php?page=resident-videos">Toutes les vidéos</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="row card m-5 bg-middle">
-                    <img src="../resources/pictures/fiber-optic.jpg" alt="" class="card-img-top">
-                    <div class="card-body">
+            <div class="col-10 col-lg-7 mt-5">
+                <div class="card-body bg-middle d-flex justify-content-between">
+                    <img src="../resources/pictures/fiber-optic.jpg" alt="" class="col-7">
+                    <div class="col-4">
                         <h5 class="card-title">Titre</h5>
-                        <p class="card-text">Some quick example text to build</p>
+                        <p class="card-text">Dernière photo poster</p>
+                        <a href="http://localhost/boombox_city/resident/index.php?page=resident-pictures">Toutes les photos</a>
                     </div>
                 </div>
             </div>
@@ -113,8 +117,8 @@ if (isset($_SESSION['flash']['success'])) {
                             <div class="collapse collapse-horizontal" id="poster">
                                 <ul class="list-group">
                                     <li class="list-group-item size"><a class="text-decoration-none" href="#">Lives</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Vidéos</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Photos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-pvideo">Vidéos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
                                 </ul>
                             </div>
 

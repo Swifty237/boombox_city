@@ -29,25 +29,26 @@ ob_start();
                 </div> -->
             </div>
 
-            <div class="col col-lg-7 mt-5">
 <?php
     foreach ($videos as $video): 
 ?>
-        <div class="row card m-5 bg-middle">
-            <video controls>
-                <source src="./resources/videos/<?= $video->video_name ?>" type="video/mp4">
-            </video>
+        <div class="card col-10 col-lg-7 mt-5">
+            <div class=" card-body bg-middle d-flex justify-content-between">
+                <video class="col-7" controls>
+                    <source src="./resources/videos/<?= $video->video_name ?>" type="video/mp4">
+                </video>
 
-            <div class="card-body">
-                <h5 class="card-title"><?= $video->title ?></h5>
-                <p class="card-text"><?= $video->description ?></p>
+                <div class="col-4">
+                    <h5 class="card-title"><?= $video->title ?></h5>
+                    <p class="card-text"><?= substr(nl2br($video->description), 0, 50) ?></p>
+                    <a href="#">Voir l'article complet</a>
+                </div>
             </div>
         </div>
 
 <?php
     endforeach; 
 ?>
-            </div>
 
             <!-- <div class="col-2 mt-4 right-side d-none d-lg-block">
                 <div class="row mb-5">

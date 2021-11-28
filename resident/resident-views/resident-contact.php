@@ -62,14 +62,14 @@ else {
                 </div>
             </div>
 
-            <div class="col col-lg-7 mt-5">
-<?php
+            <?php
     foreach ($residents as $resident):
         
         if ($resident->id != $_SESSION['resident']->id) {
-
+            
             ?>
-                <div class="row m-5 bg-middle rounded">
+            <div class="col-10 col-lg-7 mt-5">
+                <div class="row bg-middle rounded">
                     <div class="col-4 card border-0 p-2">
                         <img src="../resources/pictures/profil/<?= $resident->profil_picture ?>" class="card-img-top">
                     </div>
@@ -79,11 +79,11 @@ else {
                         <span class="card-text"><a href="http://localhost/boombox_city/resident/index.php?page=resident-tchat&id=<?= $resident->id ?>">Parler avec <?= $resident->firstname ?></a></span>
                     </div>
                 </div>
+            </div>
 <?php
         }
     endforeach; 
 ?>
-            </div>
 
             <div class="col-2 mt-4 right-side d-none d-lg-block">
                 <div class="row mb-2">
@@ -105,8 +105,8 @@ else {
                             <div class="collapse collapse-horizontal" id="poster">
                                 <ul class="list-group">
                                     <li class="list-group-item size"><a class="text-decoration-none" href="#">Lives</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Vidéos</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Photos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-pvideo">Vidéos</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
                                 </ul>
                             </div>
 

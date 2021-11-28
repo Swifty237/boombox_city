@@ -1,22 +1,23 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-image: url("../resources/pictures/new-york-night.jpg");
+    background: linear-gradient(.25turn,rgba(98, 130, 138, 0.9), rgb(255, 255, 255), rgba(98, 130, 138, 0.9));
     background-size: cover;
     background-repeat: round;
     overflow-x: hidden;
 }
 
-.btn-box {
+/* .btn-box {
     background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(7, 151, 55, 0.7), rgba(0, 0, 0, 0.9)); 
-}
+} */
 
 .connexion-box {
-    background: linear-gradient(rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0));
+    background: linear-gradient(.25turn,rgb(255, 255, 255), rgba(98, 130, 138, 0.9), rgb(255, 255, 255));
+    box-shadow: 20px -16px rgba(50, 85, 85, 0.3);
 }
 
 .inscription-box {
-    background: linear-gradient(rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0)); 
+    background: linear-gradient(.25turn,rgb(255, 255, 255), rgba(98, 130, 138, 0.9), rgb(255, 255, 255)); 
 }
 
 .errors {
@@ -25,4 +26,12 @@ body {
 
 .validation {
     background: linear-gradient(rgb(0, 0, 0, .8), rgb(111, 175, 109), rgb(0, 0, 0, .8));
+}
+
+.btn-box {
+    background: linear-gradient(rgb(3, 100, 87), rgba(0, 0, 0, 0.8), rgb(3, 100, 87));
+}
+
+.text-color {
+    color:  linear-gradient(rgb(0, 0, 0), rgba(163, 203, 240, 0.7), rgb(0, 0, 0));
 }
