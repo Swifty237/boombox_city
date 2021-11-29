@@ -20,11 +20,11 @@ body {
 }
 
 .errors {
-    background: linear-gradient(rgb(0, 0, 0, .5), rgb(255, 0, 0), rgb(0, 0, 0, .5));
+    background: rgb(255, 0, 0);
 }
 
 .validation {
-    background: linear-gradient(rgb(0, 0, 0, .8), rgb(111, 175, 109), rgb(0, 0, 0, .8));
+    background: rgb(62, 145, 60);
 }
 
 .btn-box {

@@ -63,7 +63,13 @@ class MainController
         switch ($page) {
             
             case 'home': 
-                $pageObject = new Home(); 
+                $pageObject = new Home();
+
+                $maxVideoId = $pageObject->getMaxVideoId();
+                $homeVideo = $pageObject->getHomeVideo($maxVideoId);
+
+                $maxPictureId = $pageObject->getMaxPictureId();
+                $homePicture = $pageObject->getHomePicture($maxPictureId);
             break;
             
             case 'videos': 
@@ -86,18 +92,6 @@ class MainController
             case 'errors': 
                     
                 $pageObject = new Errors();
-
-            break;
-                
-            case 'lives':
-
-                $pageObject = new Lives();
-
-            break;
-                
-            case 'contact': 
-                    
-                $pageObject = new Contact(); 
 
             break;
                 

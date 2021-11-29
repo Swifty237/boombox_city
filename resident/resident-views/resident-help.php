@@ -17,41 +17,43 @@ else {
 <div class="row block-container justify-content-center">
 
             <div class="col-2 mt-4 left-side d-none d-lg-block">
-                <div class="row mb-2">
+            <div class="row mb-2">
                     <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="false" aria-controls="collapseWidthExample">
-                        Actualités
+                        Boombox actus
                     </button>
                     <div class="collapse collapse-horizontal" id="news">
                         <ul class="list-group">
-                            <li class="list-group-item size">Actu Lives</li>
-                            <li class="list-group-item size">Actu Photos</li>
-                            <li class="list-group-item size">Actu Vidéos</li>
+                            <li class="list-group-item size">prochains lives </li>
+                            <li class="list-group-item size">Video de la semaine </li>
+                            <li class="list-group-item size">Photo de la semaine </li>
+                            <li class="list-group-item size">Membre de la semaine </li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#infos" aria-expanded="false" aria-controls="collapseWidthExample">
-                            City infos
+                            Boombox infos
                     </button>
                     <div class="collapse collapse-horizontal" id="infos">
                         <ul class="list-group">
-                            <li class="list-group-item size">Nombres d'habitants</li>
-                            <li class="list-group-item size">Nombres de visites</li>
+                            <li class="list-group-item size">Nombre de membres</li>
+                            <li class="list-group-item size">Nombre de videos</li>
+                            <li class="list-group-item size">Nombre de photos</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="row mb-2">
                     <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#example" aria-expanded="false" aria-controls="collapseWidthExample">
-                        Exemples
+                        Interactions
                     </button>
                     <div class="collapse collapse-horizontal" id="example">
                         <ul class="list-group">
-                            <li class="list-group-item size d-flex justify-content-center">exemples d'infos</li>
-                            <li class="list-group-item size d-flex justify-content-center">exemples d'infos</li>
-                            <li class="list-group-item size d-flex justify-content-center">exemples d'infos</li>
-                            <li class="list-group-item size d-flex justify-content-center">exemples d'infos</li>
+                            <li class="list-group-item size">Membre(s) en ligne</li>
+                            <li class="list-group-item size">Discussion(s) ouverte(s) </li>
+                            <li class="list-group-item size">like(s) video(s)</li>
+                            <li class="list-group-item size">like(s) photo(s)</li>
                         </ul>
                     </div>
                 </div>
@@ -90,21 +92,21 @@ else {
 
                             <div class="collapse collapse-horizontal" id="profil-options">
                                 <ul class="list-group">
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Voir profil</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-modif&id=<?= $_SESSION['resident']->id ?>">Modifier profil</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="../index.php?page=logout">Se déconnecter</a></li>
+                                    <li class="list-group-item size"><a class="d-flex justify-content-center text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Voir mon profil</a></li>
+                                    <li class="list-group-item size"><a class="d-flex justify-content-center text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-modif&id=<?= $_SESSION['resident']->id ?>">Modifier</a></li>
+                                    <li class="list-group-item size"><a class="d-flex justify-content-center text-decoration-none" href="../index.php?page=logout">Se déconnecter</a></li>
                                 </ul>
                             </div>
 
                             <button class="btn city-button" type="button" data-bs-toggle="collapse" data-bs-target="#poster" aria-expanded="false" aria-controls="poster">
-                                <span class="size text-white">Poster</span>
+                                <span class="size text-white">Poster / Annoncer</span>
                             </button>
 
                             <div class="collapse collapse-horizontal" id="poster">
                                 <ul class="list-group">
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="#">Lives</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-pvideo">Vidéos</a></li>
-                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
+                                    <li class="list-group-item size"><a class="d-flex justify-content-center text-decoration-none" href="#">Lives</a></li>
+                                    <li class="list-group-item size"><a class="d-flex justify-content-center text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-pvideo">Vidéos</a></li>
+                                    <li class="list-group-item size"><a class="d-flex justify-content-center text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
                                 </ul>
                             </div>
 

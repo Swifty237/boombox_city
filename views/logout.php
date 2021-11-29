@@ -7,6 +7,6 @@ if (isset($_SESSION['resident'])) {
     
 }
 
-$_SESSION['flash'] = "Vous êtes déconnecté";
+$_SESSION['flash'] = ['visteur' => 'Vous êtes déconnecté'];
 
 header('Location:http://localhost/boombox_city/index.php?');

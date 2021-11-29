@@ -12,6 +12,17 @@ if (isset($_SESSION['flash']['danger'])) {
     unset($_SESSION['flash']['danger']);
 }
 
+if (isset($_SESSION['flash']['visiteur'])) {
+    
+    echo    '<div class="row card m-3 validation text-white">
+                <div class="card-body">
+                    <p class="card-text">'.$_SESSION['flash']['visiteur'].'</p>
+                </div>
+            </div>';
+
+    unset($_SESSION['flash']['visiteur']);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,17 +36,13 @@ if (isset($_SESSION['flash']['danger'])) {
         <title> Boombox City | Connexion </title>
     </head>
 
-    <body class="my-3 d-flex flex-column">
+    <body class="d-flex flex-column justify-content-around">
 
-        <div class="card welcome-box bg-transparent shadow-lg">
-            <h1 class="text-center">Bienvenue à Boombox City</h1>
+        <div class="d-flex justify-content-center shadow-lg">
+            <img class="col-3" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
         </div>
 
-        <div class="d-flex justify-content-center my-4">
-            <img class="logo col-2" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
-        </div>
-
-        <div class="card col-7 align-self-center connexion-box border">
+        <div class="card col-7 align-self-center connexion-box border boder-0 shadow-lg mb-5">
             <form class="form" method="POST">
                 <div class="row justify-content-center">
                     <div class="col-10 my-3">
