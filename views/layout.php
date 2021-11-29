@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="./css/style.css">
         <title> Boombox City | <?php echo $title; ?> </title>
     </head>
-    <body>
+    <body class="container-fluid">
         <header class="row navigation justify-content-around">
             <nav class="col-10 navbar navbar-expand-lg navbar-dark">
                 <div class="row col-8 col-lg-12 px-3 align-items-center">
@@ -44,14 +44,14 @@
                 </div>
 
                 <div class="d-flex d-lg-none flex-column justify-content-center">
-                    <button class="btn city-button mb-2"><a href="index.php?page=login" class="text-decoration-none size text-white">Se connecter</a></button>
-                    <button class="btn city-button"><a href="index.php?page=register" class="text-decoration-none size text-white">Devenir habitant</a></button>
+                    <a href="index.php?page=login" class="size mb-2">Se connecter</a>
+                    <a href="index.php?page=register" class="size">S'inscrire</a>
                 </div> 
             </nav>
 
             <div class="col-2 d-none d-lg-flex flex-column justify-content-center">
-                <button class="btn city-button mb-2"><a href="index.php?page=login" class="text-decoration-none size text-white">Se connecter</a></button>
-                <button class="btn city-button"><a href="index.php?page=register" class="text-decoration-none size text-white">Devenir habitant</a></button>
+                <a href="index.php?page=login" class="size mb-2">Se connecter</a>
+                <a href="index.php?page=register" class="size">S'inscrire</a>
             </div> 
             
             <div class="col-11 d-lg-none rounded mb-2">

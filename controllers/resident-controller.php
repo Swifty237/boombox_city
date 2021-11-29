@@ -21,13 +21,13 @@ class ResidentController
 
             else {
 
-                $page = 'resident-errors';
+                $page = 'errors';
             }
         }
 
         else {
 
-            $page = 'resident-welcome';
+            $page = 'login';
 
         }
         
@@ -103,6 +103,12 @@ class ResidentController
             case 'resident-home': 
                 
                 $pageObject = new ResidentHome();
+
+                $maxVideoId = $pageObject->getMaxVideoId();
+                $homeVideo = $pageObject->getHomeVideo($maxVideoId);
+
+                $maxPictureId = $pageObject->getMaxPictureId();
+                $homePicture = $pageObject->getHomePicture($maxPictureId);
 
             break;
 
@@ -256,8 +262,79 @@ class ResidentController
             break;
 
             case 'resident-modif':
+
+                if (isset($_POST['submit'])) {
+
+                    $pseudo = htmlspecialchars(trim($_POST['pseudo']));
+                    $description = htmlspecialchars(trim($_POST['description']));
+
+                    $pageObject = new ResidentModif($pseudo, $description, $this->pdo);
+                    $pageObject->updatePseudo();
+                    $pageObject->updateDescription();
+
+                    session_start();
+                    $id = $_SESSION['resident']->id;
+
+                    $error = $pageObject->updateProfilImage($id);
+
+                    if (!empty($error)) {
+
+                        ?>
+                            <div class="card errors">
+                              <div class="card-text d-flex justify-content-center my-2 text-white">
+                  
+                              <?php
+                                echo $error;
+                              ?>
+                  
+                              </div>
+                            </div>
+                  
+                          <?php
+                    }
+
+                    else {
+
+                        header('Location:http://localhost/boombox_city/resident/index.php?page=resident-profil&id='.$_SESSION['resident']->id);
+                        exit();
+                    } 
+                }
                 
-                $pageObject = new ResidentModif();
+                break;
+
+                case 'resident-vmodif':
+
+                    if (isset($_POST['submit'])) {
+
+                        $title = htmlspecialchars(trim($_POST['title']));
+                        $description = htmlspecialchars(trim($_POST['description']));
+    
+                        $pageObject = new ResidentVmodif($title, $description, $this->pdo);
+                        $pageObject->updateTitle();
+                        $pageObject->updateDescription();
+    
+                        header('Location:http://localhost/boombox_city/resident/index.php?page=resident-video&id='.$_GET['id']);
+                        exit(); 
+                    }
+                
+                break;
+
+                case 'resident-pmodif':
+
+                    if (isset($_POST['submit'])) {
+
+                        $title = htmlspecialchars(trim($_POST['title']));
+                        $description = htmlspecialchars(trim($_POST['description']));
+    
+                        $pageObject = new ResidentPmodif($title, $description, $this->pdo);
+                        $pageObject->updateTitle();
+                        $pageObject->updateDescription();
+    
+                        header('Location:http://localhost/boombox_city/resident/index.php?page=resident-video&id='.$_GET['id']);
+                        exit();
+                    }
+
+                break;
         }
 
         require_once '../resident/resident-views/'.$page.'.php';                  

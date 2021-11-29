@@ -25,14 +25,20 @@ if (isset($_SESSION['flash']['danger'])) {
         <title> Boombox City | Connexion </title>
     </head>
 
-    <body class="d-flex flex-column mt-5 align-items-center">
-        
-        <h3 class="text-center text-color mb-5">Connexion utilisateur</h3>
+    <body class="my-3 d-flex flex-column">
+
+        <div class="card welcome-box bg-transparent shadow-lg">
+            <h1 class="text-center">Bienvenue à Boombox City</h1>
+        </div>
+
+        <div class="d-flex justify-content-center my-4">
+            <img class="logo col-2" src="./resources/pictures/logo/boombox_logo.png" alt="logo">
+        </div>
 
         <div class="card col-7 align-self-center connexion-box border">
             <form class="form" method="POST">
                 <div class="row justify-content-center">
-                    <div class="col-10 mb-3">
+                    <div class="col-10 my-3">
                         <label class="form-label" for="email">Adresse email</label>
                         <input class= "form-control" type="email" id="email" name="email" required>
                     </div>
@@ -45,6 +51,10 @@ if (isset($_SESSION['flash']['danger'])) {
                     
                     <p class="my-3 d-flex justify-content-center">
                         <a href="index.php?page=register">S'inscrire</a>
+                    </p>
+
+                    <p class="mb-3 d-flex justify-content-center">
+                        <a href="index.php?page=home">Simple visite</a>
                     </p>
                 </div>
             </form>

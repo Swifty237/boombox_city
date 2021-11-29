@@ -51,7 +51,7 @@ class MainController
 
         else {
 
-            $page = 'welcome';
+            $page = 'login';
 
         }
         
@@ -204,10 +204,6 @@ class MainController
                     }
                 }
 
-            break;
-
-            case 'welcome':
-            
             break;
 
             case 'logout':

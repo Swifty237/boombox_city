@@ -78,16 +78,24 @@ else {
             <div class="col-2 mt-4 right-side d-none d-lg-block">
                 <div class="row mb-2">
                     <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target= "#profil" aria-controls="profil" aria-expanded="false" aria-label="">
-                        <img src="../resources/pictures/profil/profil5.jpg" alt="" class="card-img-top">
+                        <img src="../resources/pictures/profil/<?= ($_SESSION['resident']->profil_picture != NULL) ? $_SESSION['resident']->profil_picture : "user.jpg" ?>" alt="" class="card-img-top">
                         <h5 class="card card-title"><?= $_SESSION['resident']->name ?></h5>
                     </button>
 
                     <div class="collapse" id="profil">
                         <div class="d-flex flex-column">
-                            <button class="btn city-button mb-2">
-                                <a class="size text-white text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Profil</a>
+                            <button class="btn city-button mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#profil-options" aria-expanded="false" aria-controls="profil-options">
+                                <span class="size text-white">Profil</span>
                             </button>
 
+                            <div class="collapse collapse-horizontal" id="profil-options">
+                                <ul class="list-group">
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-profil&id=<?= $_SESSION['resident']->id ?>">Voir profil</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-modif&id=<?= $_SESSION['resident']->id ?>">Modifier profil</a></li>
+                                    <li class="list-group-item size"><a class="text-decoration-none" href="../index.php?page=logout">Se déconnecter</a></li>
+                                </ul>
+                            </div>
+                            
                             <button class="btn city-button" type="button" data-bs-toggle="collapse" data-bs-target="#poster" aria-expanded="false" aria-controls="poster">
                                 <span class="size text-white">Poster</span>
                             </button>
@@ -98,18 +106,6 @@ else {
                                     <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-video">Vidéos</a></li>
                                     <li class="list-group-item size"><a class="text-decoration-none" href="http://localhost/boombox_city/resident/index.php?page=resident-ppicture">Photos</a></li>
                                 </ul>
-                            </div>
-
-                            <button class="btn city-button mt-2" type="button" data-bs-toggle="collapse" data-bs-target="#modifier" aria-expanded="false" aria-controls="modifier">
-                                <span class="size text-white">Modifier</span>
-                            </button>
-
-                            <div class="collapse collapse-horizontal" id="modifier">
-                                    <ul class="list-group">
-                                        <li class="list-group-item size"><a class="text-decoration-none" href="#">Profil</a></li>
-                                        <li class="list-group-item size"><a class="text-decoration-none" href="#">Vidéos</a></li>
-                                        <li class="list-group-item size"><a class="text-decoration-none" href="#">Photos</a></li>
-                                    </ul>
                             </div>
 
                         </div>        

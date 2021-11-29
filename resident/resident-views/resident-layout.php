@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="../css/style.css">
         <title> Boombox City | <?php echo $title; ?> </title>
     </head>
-    <body>
+    <body class="container-fluid">
         <header class="row navigation justify-content-around">
             <nav class="col-10 navbar navbar-expand-lg navbar-dark">
 
@@ -23,12 +23,12 @@
 
                     <div class="col-7 collapse navbar-collapse justify-content-between city-button rounded" id="listNav">
                         <ul class="navbar-nav col-6">
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-home')? 'page' : ''; ?>" href="index.php?page=resident-home">Home</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-videos')? 'page' : ''; ?>" href="index.php?page=resident-videos">Vidéos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-pictures')? 'page' : ''; ?>" href="index.php?page=resident-pictures">Photos</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-lives')? 'page' : ''; ?>" href="index.php?page=resident-lives">Lives</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-tchat')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-contact')? 'page' : ''; ?>" href="index.php?page=resident-contact">Discuter</a></li>
-                            <li class="nav-item"><a class="nav-link <?php echo ($page == 'resident-help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-help')? 'page' : ''; ?>" href="index.php?page=resident-help">Aide</a></li>
+                            <li class="nav-item"><a class="size nav-link <?php echo ($page == 'resident-home')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-home')? 'page' : ''; ?>" href="index.php?page=resident-home">Home</a></li>
+                            <li class="nav-item"><a class="size nav-link <?php echo ($page == 'resident-videos')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-videos')? 'page' : ''; ?>" href="index.php?page=resident-videos">Vidéos</a></li>
+                            <li class="nav-item"><a class="size nav-link <?php echo ($page == 'resident-pictures')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-pictures')? 'page' : ''; ?>" href="index.php?page=resident-pictures">Photos</a></li>
+                            <li class="nav-item"><a class="size nav-link <?php echo ($page == 'resident-lives')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-lives')? 'page' : ''; ?>" href="index.php?page=resident-lives">Lives</a></li>
+                            <li class="nav-item"><a class="size nav-link <?php echo ($page == 'resident-tchat')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-contact')? 'page' : ''; ?>" href="index.php?page=resident-contact">Discuter</a></li>
+                            <li class="nav-item"><a class="size nav-link <?php echo ($page == 'resident-help')? 'active' : ''; ?>" aria-current= "<?php echo ($page == 'resident-help')? 'page' : ''; ?>" href="index.php?page=resident-help">Aide</a></li>
                         </ul>
 
                         <div class="col-5 d-none d-lg-flex flex-column justify-content-center city-button">
@@ -46,12 +46,12 @@
                 </div>
 
                 <div class="d-flex d-lg-none flex-column justify-content-center">
-                    <button class="btn city-button"><a href="../index.php?page=logout" class="text-decoration-none size text-white">Se déconnecter</a></button>
+                    <a href="../index.php?page=logout" class="size">Se déconnecter</a>
                 </div>  
             </nav>
 
             <div class="col-2 d-none d-lg-flex flex-column justify-content-center">
-                <button class="btn city-button"><a href="../index.php?page=logout" class="text-decoration-none size text-white">Se déconnecter</a></button>
+                <a href="../index.php?page=logout" class="size">Se déconnecter</a>
             </div>
 
             <div class="col-11 d-lg-none rounded mb-2">
@@ -78,7 +78,7 @@
                         <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Home</a></li>
                         <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Vidéos</a></li>
                         <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Photos</a></li>
-                        <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Lives</a></li>
+                        <!-- <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Lives</a></li> -->
                         <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Contact</a></li>
                         <li class="list-inline-item d-none d-md-block"><a class="text-decoration-none text-white" href="#">Aide</a></li>
                     </ul>  
