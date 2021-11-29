@@ -11,8 +11,7 @@ trait MainModel
             $this->pdo = new PDO('mysql:bd30b0362e7c98:30393616@us-cdbr-east-04.cleardb.com/heroku_7af5250ecc04f74?reconnect=true');
         }
         catch (PDOException $e) {
-            echo $e;
-            exit();
+            echo "Une erreur est sur venue lors de la connexion a la base de données";
         }
     }
 }
