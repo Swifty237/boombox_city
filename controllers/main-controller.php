@@ -51,7 +51,7 @@ class MainController
 
         else {
 
-            $page = 'login';
+            $page = 'home';
 
         }
         

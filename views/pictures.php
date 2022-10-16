@@ -42,7 +42,7 @@ ob_start();
     <div class="col-4">
         <h5 class="card-title"><?= $picture->title ?></h5>
         <p class="card-text"><?= substr(nl2br($picture->description), 0, 50) ?></p>
-        <a href="#">Voir l'article complet</a>
+        <a href="http://localhost/boombox_city/resident/index.php?page=resident-picture&id=<?= $picture->id ?>">Voir l'article complet</a>
     </div>
 </div>
 

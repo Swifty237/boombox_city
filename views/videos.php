@@ -43,7 +43,7 @@ ob_start();
                 <div class="col-4">
                     <h5 class="card-title"><?= $video->title ?></h5>
                     <p class="card-text"><?= substr(nl2br($video->description), 0, 50) ?></p>
-                    <a href="#">Voir l'article complet</a>
+                    <a href="http://localhost/boombox_city/resident/index.php?page=resident-video&id=<?= $video->id ?>">Voir l'article complet</a>
                 </div>
             </div>
         </div>

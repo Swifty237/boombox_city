@@ -26,7 +26,7 @@ if (isset($_SESSION['flash']['visiteur'])) {
 
             <div class="row mb-2">
                 <button class="btn city-button text-white size" type="button" data-bs-toggle="collapse" data-bs-target="#news" aria-expanded="false" aria-controls="collapseWidthExample">
-                    Boombox actu
+                    Boombox actus
                 </button>
                 <div class="collapse collapse-horizontal" id="news">
                     <ul class="list-group">
